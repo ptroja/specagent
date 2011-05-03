@@ -71,7 +71,7 @@
         eType="#//OutputBuffer"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Behaviour">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="functions" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="functions" upperBound="-1"
         eType="#//TransitionFunction" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initial" lowerBound="1"
         eType="#//Condition" containment="true"/>
