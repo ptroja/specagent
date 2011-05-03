@@ -465,7 +465,7 @@
     </children>
     <styles xmi:type="notation:ConnectorStyle" xmi:id="_B-SpvFb0EeCXwqISGNZFEw" lineColor="4210752"/>
     <styles xmi:type="notation:FontStyle" xmi:id="_B-SpvVb0EeCXwqISGNZFEw" fontColor="4210752" fontName="Sans" fontHeight="10"/>
-    <element xmi:type="ecore:EReference" href="MultiRobotSystem.ecore#//Behaviour/behaviour"/>
+    <element xmi:type="ecore:EReference" href="MultiRobotSystem.ecore#//Behaviour/transitionFunctions"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_B-Spvlb0EeCXwqISGNZFEw" points="[0, 0, -230, 60]$[230, -60, 0, 0]"/>
     <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_B_lDIVb0EeCXwqISGNZFEw" id="(0.9774011299435028,0.4507042253521127)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_B_lDIlb0EeCXwqISGNZFEw" id="(0.04519774011299435,0.375)"/>
