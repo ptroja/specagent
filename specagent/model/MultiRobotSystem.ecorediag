@@ -264,8 +264,12 @@
     <children xmi:type="notation:Node" xmi:id="_B-NKIVb0EeCXwqISGNZFEw" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_B-NKIlb0EeCXwqISGNZFEw" type="5001">
       <children xmi:type="notation:Node" xmi:id="_B-NKKlb0EeCXwqISGNZFEw" type="2001">
-        <element xmi:type="ecore:EAttribute" href="MultiRobotSystem.ecore#//OpaqueData/Type"/>
+        <element xmi:type="ecore:EAttribute" href="MultiRobotSystem.ecore#//OpaqueData/type"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_B-NKK1b0EeCXwqISGNZFEw"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_WBepwXmnEeCAfq4euFWE3w" type="2001">
+        <element xmi:type="ecore:EAttribute" href="MultiRobotSystem.ecore#//OpaqueData/package"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_WBepwnmnEeCAfq4euFWE3w"/>
       </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_B-NKI1b0EeCXwqISGNZFEw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_B-NKJFb0EeCXwqISGNZFEw"/>
