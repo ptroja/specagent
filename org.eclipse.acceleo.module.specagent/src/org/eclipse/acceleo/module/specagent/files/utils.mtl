@@ -1,0 +1,29 @@
+[comment encoding = UTF-8 /]
+[module utils('http://multirobotsystem/1.0','http://www.eclipse.org/emf/2002/Ecore')/]
+
+[query public hasInputBuffers(anAgent : Agent) : Boolean =
+sensors.inputs->notEmpty() or effector.inputs->notEmpty() or transmitters.inputs->notEmpty()
+/]
+
+[query public hasOutputBuffers(anAgent : Agent) : Boolean =
+sensors.outputs->notEmpty() or effector.outputs->notEmpty() or transmitters.outputs->notEmpty()
+/]
+
+[query public bufferId(buffer : InputBuffer) : String =
+let m : EObject = buffer.eContainer() in
+if m.oclIsTypeOf(Sensor) then ('Sensor_'+m.oclAsType(Sensor).name+'_'+buffer.name) else
+if m.oclIsTypeOf(Effector) then ('Effector_'+m.oclAsType(Effector).name+'_'+buffer.name) else
+if m.oclIsTypeOf(Transmitter) then ('Transmitter_'+m.oclAsType(Transmitter).name+'_'+buffer.name) else
+'UNKNOWN_'+buffer.name
+endif
+endif
+endif
+/]
+
+[query public allInputBuffers(anAgent : Agent) : Set(InputBuffer) =
+if effector->notEmpty() then
+(effector.oclAsType(IOElement)->union(sensors.oclAsType(IOElement))).inputs
+else
+(sensors.oclAsType(IOElement)->union(transmitters.oclAsType(IOElement))).inputs
+endif
+/]
