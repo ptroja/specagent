@@ -10,7 +10,7 @@
   </eAnnotations>
   <eClassifiers xsi:type="ecore:EClass" name="System">
     <eStructuralFeatures xsi:type="ecore:EReference" name="agents" lowerBound="1"
-        upperBound="-1" eType="#//Agent" containment="true"/>
+        upperBound="-1" eType="#//Agent" containment="true" eKeys="#//Agent/name"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
@@ -29,13 +29,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="effector" eType="#//Effector"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sensors" upperBound="-1"
-        eType="#//Sensor" containment="true"/>
+        eType="#//Sensor" containment="true" eKeys="#//Sensor/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transmitters" upperBound="-1"
-        eType="#//Transmitter" containment="true"/>
+        eType="#//Transmitter" containment="true" eKeys="#//Transmitter/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="behaviours" lowerBound="1"
-        upperBound="-1" eType="#//Behaviour" containment="true"/>
+        upperBound="-1" eType="#//Behaviour" containment="true" eKeys="#//Behaviour/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="memory" upperBound="-1"
-        eType="#//InternalData" containment="true"/>
+        eType="#//InternalData" containment="true" eKeys="#//InternalData/name"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Effector" eSuperTypes="#//IOElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -79,7 +79,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Behaviour">
     <eStructuralFeatures xsi:type="ecore:EReference" name="functions" upperBound="-1"
-        eType="#//TransitionFunction" containment="true"/>
+        eType="#//TransitionFunction" containment="true" eKeys="#//TransitionFunction/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="initial" lowerBound="1"
         eType="#//Condition" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="terminal" lowerBound="1"
@@ -101,9 +101,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IOElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
-        eType="#//InputBuffer" containment="true"/>
+        eType="#//InputBuffer" containment="true" eKeys="#//InputBuffer/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
-        eType="#//OutputBuffer" containment="true"/>
+        eType="#//OutputBuffer" containment="true" eKeys="#//OutputBuffer/name"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OpaqueData" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
