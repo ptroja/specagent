@@ -1,24 +1,28 @@
 [comment encoding = UTF-8 /]
 [module system2ada('http://multirobotsystem/1.0')/]
 [import agent_spec/]
+[import agent_body/]
+[import agent_buffers/]
 
 [template public system2ada(aSystem : System)]
 
 [comment @main /]
-[file (aSystem.name.concat('.adb'), false, 'UTF-8')]
+[file ('system_'+aSystem.name+'.adb', false, 'UTF-8')]
 -- with Ada.Text_IO;
 [for (anAgent : Agent | agents)]
-with [anAgent.name/]_agent;
+with Agent_[anAgent.name/];
 [/for]
 
-procedure [aSystem.name/]_system is
+procedure System_[aSystem.name/] is
 begin
    null;
-end [aSystem.name/]_system;
+end System_[aSystem.name/];
 [/file]
 
 [for (anAgent : Agent | aSystem.agents)]
 [agent_spec(anAgent)/]
+[agent_body(anAgent)/]
+[agent_buffers(anAgent)/]
 [/for]
 	
 [/template]

@@ -1,0 +1,78 @@
+[comment encoding = UTF-8 /]
+[module agent_buffers('http://multirobotsystem/1.0')/]
+
+[template public agent_buffers(anAgent : Agent)]
+	
+[comment @main /]
+[file ('agent_'+anAgent.name+'_buffers.ads', false, 'UTF-8')]
+-- TODO: with section
+
+package Agent_[anAgent.name/]_Buffers is
+   pragma Remote_Types;
+   
+   [if effector->notEmpty()]
+   package Effector_[effector.name/]_t is
+      [for (aInputBuffer : InputBuffer | effector.inputs)]
+      package [aInputBuffer.name/]_t is
+         subtype DataType is [aInputBuffer.type/];
+      end [aInputBuffer.name/]_t;
+      [/for]
+      type DataType is
+         record
+      [for (aInputBuffer : InputBuffer | effector.inputs)]
+            [aInputBuffer.name/] : [aInputBuffer.name/]_t.Datatype;
+      [/for]
+         end record;
+   end Effector_[effector.name/]_t;
+   [/if]
+
+   [for (aSensor : Sensor | sensors)]
+   package Sensor_[aSensor.name/]_t is
+      [for (aInputBuffer : InputBuffer | aSensor.inputs)]
+      package [aInputBuffer.name/]_t is
+         subtype DataType is [aInputBuffer.type/];
+      end [aInputBuffer.name/]_t;
+      [/for]
+      type DataType is
+         record
+      [for (aInputBuffer : InputBuffer | aSensor.inputs)]
+            [aInputBuffer.name/] : [aInputBuffer.name/]_t.Datatype;
+      [/for]
+         end record;
+   end Sensor_[aSensor.name/]_t;
+   [/for]
+
+   [for (aTransmitter : Transmitter | transmitters)]
+   package Transmitter_[aTransmitter.name/]_t is
+      [for (aInputBuffer : InputBuffer | aTransmitter.inputs)]
+      package [aInputBuffer.name/]_t is
+         subtype DataType is [aInputBuffer.type/];
+      end [aInputBuffer.name/]_t;
+      [/for]
+      type DataType is
+         record
+      [for (aInputBuffer : InputBuffer | aTransmitter.inputs)]
+            [aInputBuffer.name/] : [aInputBuffer.name/]_t.Datatype;
+      [/for]
+         end record;
+   end Transmitter_[aTransmitter.name/]_t;
+   [/for]   
+
+   -- State data
+   type DataType is
+      record
+      [if effector->notEmpty()]
+         Effector_[effector.name/] : Effector_[effector.name/]_t.DataType;
+      [/if]
+      [for (aSensor : Sensor | sensors)]
+         Sensor_[aSensor.name/] : Sensor_[aSensor.name/]_t.DataType;
+      [/for]
+      [for (aTransmitter : Transmitter | transmitters)]
+         Sensor_[aTransmitter.name/] : Sensor_[aTransmitter.name/]_t.DataType;
+      [/for]
+      end record;
+
+end Agent_[anAgent.name/]_Buffers;
+[/file]
+	
+[/template]
