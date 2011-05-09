@@ -175,10 +175,6 @@
   <children xmi:type="notation:Node" xmi:id="_B-KG1Fb0EeCXwqISGNZFEw" type="1001">
     <children xmi:type="notation:Node" xmi:id="_B-Kt4Fb0EeCXwqISGNZFEw" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_B-Kt4Vb0EeCXwqISGNZFEw" type="5001">
-      <children xmi:type="notation:Node" xmi:id="_B-Kt6Vb0EeCXwqISGNZFEw" type="2001">
-        <element xmi:type="ecore:EAttribute" href="MultiRobotSystem.ecore#//Condition/name"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_B-Kt6lb0EeCXwqISGNZFEw"/>
-      </children>
       <children xmi:type="notation:Node" xmi:id="_3SXD0HEQEeC-3orzxhRhAQ" type="2001">
         <element xmi:type="ecore:EAttribute" href="MultiRobotSystem.ecore#//Condition/description"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_3SXD0XEQEeC-3orzxhRhAQ"/>
