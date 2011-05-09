@@ -3,6 +3,7 @@
 [import agent_spec/]
 [import agent_body/]
 [import agent_buffers/]
+[import logic_spec/]
 
 [template public system2ada(aSystem : System)]
 
@@ -23,6 +24,7 @@ end System_[aSystem.name/];
 [agent_spec(anAgent)/]
 [agent_body(anAgent)/]
 [agent_buffers(anAgent)/]
+[logic_spec(anAgent)/]
 [/for]
 	
 [/template]

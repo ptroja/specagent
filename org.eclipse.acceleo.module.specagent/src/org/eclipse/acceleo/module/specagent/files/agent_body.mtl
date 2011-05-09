@@ -7,7 +7,7 @@
    protected SharedInputDataBuffers is
       -- Entry for conditional receive of data from a single buffer
       entry BlockForSingleMessage
-        (state : out state_t;
+        (state : out Agent_[anAgent.name/]_Buffers.DataType;
          fresh : out fresh_status_t);
       -- Entry for conditional receive of data from a single buffer
       procedure PeekForSingleMessage
