@@ -29,13 +29,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="effector" ordered="false"
         eType="#//Effector" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sensors" ordered="false"
-        upperBound="-1" eType="#//Sensor" containment="true" eKeys="#//Sensor/name"/>
+        upperBound="-1" eType="#//Sensor" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="transmitters" ordered="false"
-        upperBound="-1" eType="#//Transmitter" containment="true" eKeys="#//Transmitter/name"/>
+        upperBound="-1" eType="#//Transmitter" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="behaviours" lowerBound="1"
         upperBound="-1" eType="#//Behaviour" containment="true" eKeys="#//Behaviour/name"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="memory" upperBound="-1"
-        eType="#//InternalData" containment="true" eKeys="#//InternalData/name"/>
+        eType="#//InternalData" containment="true" eKeys="#//OpaqueData/name"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Effector" eSuperTypes="#//IOElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -44,8 +44,6 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
       <details key="EffectorOutputs" value="outputs->size() > 0"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Sensor" eSuperTypes="#//IOElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -54,8 +52,6 @@
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore/OCL">
       <details key="SensorInputs" value="inputs->size() > 0"/>
     </eAnnotations>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Transmitter" eSuperTypes="#//IOElement">
     <eAnnotations source="http://www.eclipse.org/emf/2002/Ecore">
@@ -66,8 +62,6 @@
     </eAnnotations>
     <eStructuralFeatures xsi:type="ecore:EReference" name="remote" lowerBound="1"
         eType="#//Agent"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="TransitionFunction">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -90,27 +84,22 @@
   <eClassifiers xsi:type="ecore:EClass" name="Condition">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InputBuffer" eSuperTypes="#//OpaqueData">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="OutputBuffer" eSuperTypes="#//OpaqueData">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InputBuffer" eSuperTypes="#//OpaqueData"/>
+  <eClassifiers xsi:type="ecore:EClass" name="OutputBuffer" eSuperTypes="#//OpaqueData"/>
   <eClassifiers xsi:type="ecore:EClass" name="IOElement" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EReference" name="inputs" upperBound="-1"
-        eType="#//InputBuffer" containment="true" eKeys="#//InputBuffer/name"/>
+        eType="#//InputBuffer" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="outputs" upperBound="-1"
-        eType="#//OutputBuffer" containment="true" eKeys="#//OutputBuffer/name"/>
+        eType="#//OutputBuffer" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="OpaqueData" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="package" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
-  </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="InternalData" eSuperTypes="#//OpaqueData">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="InternalData" eSuperTypes="#//OpaqueData"/>
 </ecore:EPackage>
