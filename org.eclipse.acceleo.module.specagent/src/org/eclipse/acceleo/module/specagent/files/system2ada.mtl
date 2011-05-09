@@ -22,7 +22,7 @@ end System_[aSystem.name/];
 [/file]
 
 [for (anAgent : Agent | aSystem.agents)]
-[project(anAgent)/]
+[project(aSystem)/]
 [agent_spec(anAgent)/]
 [agent_body(anAgent)/]
 [agent_buffers(anAgent)/]

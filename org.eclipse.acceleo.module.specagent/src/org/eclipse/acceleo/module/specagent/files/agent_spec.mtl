@@ -14,13 +14,14 @@ package Agent_[anAgent.name/] is
    
    [if effector.inputs->notEmpty()]
    --  remote access to the input buffers of the effector
-   package effector_[effector.name/] is
+   package effector is
       [for (aInputBuffer : InputBuffer | effector.inputs)]
       package [aInputBuffer.name/] is
-         procedure Send(item : in Agent_[anAgent.name/]_Buffers.effector.inputs.[aInputBuffer.name/].Data_Type);
+         use Agent_[anAgent.name/]_Buffers.effector.inputs.[aInputBuffer.name/];
+         procedure Send(item : in Data_Type);
       end [aInputBuffer.name/];
       [/for]
-   end effector_[effector.name/];
+   end effector;
    [else]
    --  the effector does not have any input buffers 
    [/if]
@@ -32,7 +33,8 @@ package Agent_[anAgent.name/] is
       package [aSensor.name/] is
          [for (aInputBuffer : InputBuffer | aSensor.inputs)]
          package [aInputBuffer.name/] is
-            procedure Send(item : in Agent_[anAgent.name/]_Buffers.sensors.[aSensor.name/].inputs.[aInputBuffer.name/].Data_Type);
+            use Agent_[anAgent.name/]_Buffers.sensors.[aSensor.name/].inputs.[aInputBuffer.name/];
+            procedure Send(item : in Data_Type);
          end [aInputBuffer.name/];
          [/for]
       end [aSensor.name/];
@@ -49,7 +51,8 @@ package Agent_[anAgent.name/] is
       package [aTransmitter.name/] is
          [for (aInputBuffer : InputBuffer | aTransmitter.inputs)]
          package [aInputBuffer.name/] is
-            procedure Send(item : in Agent_[anAgent.name/]_Buffers.transmitters.[aTransmitter.name/].inputs.[aInputBuffer.name/].Data_Type);
+            use Agent_[anAgent.name/]_Buffers.transmitters.[aTransmitter.name/].inputs.[aInputBuffer.name/];
+            procedure Send(item : in Data_Type);
          end [aInputBuffer.name/];
          [/for]
       end [aTransmitter.name/];

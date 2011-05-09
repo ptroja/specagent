@@ -1,19 +1,19 @@
 [comment encoding = UTF-8 /]
 [module project('http://multirobotsystem/1.0')/]
 
-[template public project(anAgent : Agent)]
+[template public project(aSystem : System)]
 	
 [comment @main /]
-[file (anAgent.name+'.gpr', false, 'UTF-8')]
-project [anAgent.name/] is
+[file (aSystem.name+'.gpr', false, 'UTF-8')]
+project [aSystem.name/] is
 
    package Compiler is
       for Default_Switches ("ada") use ("-g", "-O2", "-gnat05");
    end Compiler;
 
-   for Main use ("system_[anAgent.name/].adb");
+   for Main use ("system_[aSystem.name/].adb");
 
-end [anAgent.name/];
+end [aSystem.name/];
 
 [/file]
 	
