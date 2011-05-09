@@ -10,10 +10,10 @@ with Agent_[anAgent.name/]_Buffers;
 package Agent_[anAgent.name/]_Behaviors is
    [for (aBehavior : Behaviour | anAgent.behaviours)]
    --  Initial condition
-   function initial_condition (current_state : in Agent_[anAgent.name/]_Buffers.DataType) return Boolean;
+   function initial_condition (current_state : in Agent_[anAgent.name/]_Buffers.Data_Type) return Boolean;
 
    --  Terminal conditin
-   function terminal_condition (current_state : in Agent_[anAgent.name/]_Buffers.DataType) return Boolean;
+   function terminal_condition (current_state : in Agent_[anAgent.name/]_Buffers.Data_Type) return Boolean;
 
    --  Transition functions
    -- ...
