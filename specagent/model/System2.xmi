@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="ASCII"?>
+<multirobotsystem:System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:multirobotsystem="http://multirobotsystem/1.0" name="sample">
+  <agents name="a1">
+    <sensors name="s1">
+      <inputs type="Integer" name="x1s"/>
+    </sensors>
+    <behaviours name="b1">
+      <initial/>
+      <terminal/>
+    </behaviours>
+  </agents>
+  <agents name="a2">
+    <effector name="y2">
+      <inputs type="Integer" name="y2e"/>
+      <inputs type="Integer" name="x2s"/>
+      <outputs type="Integer" name="y2e"/>
+    </effector>
+    <sensors name="s1">
+      <inputs type="Integer" name="x2s"/>
+      <inputs type="Integer" name="x2ss"/>
+    </sensors>
+    <behaviours name="b1">
+      <functions name="f1"/>
+      <initial/>
+      <terminal/>
+    </behaviours>
+  </agents>
+</multirobotsystem:System>
