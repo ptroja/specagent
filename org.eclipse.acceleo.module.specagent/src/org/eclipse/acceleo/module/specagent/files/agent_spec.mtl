@@ -11,37 +11,53 @@ with Agent_[anAgent.name/]_Buffers;
 package Agent_[anAgent.name/] is
    -- This is remote interface to the agent
    pragma Remote_Call_Interface;
-
-   -- remote access to the input buffers
-   [if effector->notEmpty()]
+   
+   [if effector.inputs->notEmpty()]
+   --  remote access to the input buffers of the effector
    package effector_[effector.name/] is
       [for (aInputBuffer : InputBuffer | effector.inputs)]
       package [aInputBuffer.name/] is
-         procedure Send(item : in Agent_[anAgent.name/]_Buffers.Effector_[anAgent.effector.name/]_t.inputs.[aInputBuffer.name/]_t.DataType);
+         procedure Send(item : in Agent_[anAgent.name/]_Buffers.effector.inputs.[aInputBuffer.name/].Data_Type);
       end [aInputBuffer.name/];
       [/for]
    end effector_[effector.name/];
+   [else]
+   --  the effector does not have any input buffers 
    [/if]
 
-   [for (aSensor : Sensor | sensors)]
-   package sensor_[aSensor.name/] is
-      [for (aInputBuffer : InputBuffer | aSensor.inputs)]
-      package [aInputBuffer.name/] is
-         procedure Send(item : in Agent_[anAgent.name/]_Buffers.Sensor_[aSensor.name/]_t.[aInputBuffer.name/]_t.DataType);
-      end [aInputBuffer.name/];
-      [/for]
-   end sensor_[aSensor.name/];
+   [if sensors->notEmpty()]
+   --  remote access to the input buffers of the sensors
+   package sensors is
+   [for (aSensor : Sensor | sensors->select(inputs->notEmpty()))]
+      package [aSensor.name/] is
+         [for (aInputBuffer : InputBuffer | aSensor.inputs)]
+         package [aInputBuffer.name/] is
+            procedure Send(item : in Agent_[anAgent.name/]_Buffers.sensors.[aSensor.name/].inputs.[aInputBuffer.name/].Data_Type);
+         end [aInputBuffer.name/];
+         [/for]
+      end [aSensor.name/];
    [/for]
+   end sensors;
+   [else]
+   --  sensors does not have any input buffers 
+   [/if]   
 
-   [for (aTransmitter : Transmitter | transmitters)]
-   package transmitter_[aTransmitter.name/] is
-      [for (aInputBuffer : InputBuffer | aTransmitter.inputs)]
-      package [aInputBuffer.name/] is
-         procedure Send(item : in Agent_[anAgent.name/]_Buffers.Transmitter_[aTransmitter.name/]_t.[aInputBuffer.name/]_t.DataType);
-      end [aInputBuffer.name/];
-      [/for]
-   end transmitter_[aTransmitter.name/];
+   [if transmitters->notEmpty()]
+   --  remote access to the input buffers of the transmitters
+   package transmitters is
+      [for (aTransmitter : Transmitter | transmitters->select(inputs->notEmpty()))]
+      package [aTransmitter.name/] is
+         [for (aInputBuffer : InputBuffer | aTransmitter.inputs)]
+         package [aInputBuffer.name/] is
+            procedure Send(item : in Agent_[anAgent.name/]_Buffers.transmitters.[aTransmitter.name/].inputs.[aInputBuffer.name/].Data_Type);
+         end [aInputBuffer.name/];
+         [/for]
+      end [aTransmitter.name/];
    [/for]
+   end transmitters;
+   [else]
+   --  transmitters does not have any input buffers 
+   [/if]   
 
 private
    [if hasInputBuffers(anAgent)] 

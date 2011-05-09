@@ -27,3 +27,13 @@ else
 (sensors.oclAsType(IOElement)->union(transmitters.oclAsType(IOElement))).inputs
 endif
 /]
+
+[query public ioElementTypeAsString(element : IOElement) : String =
+if element.oclIsTypeOf(Sensor) then ('sensors') else
+if element.oclIsTypeOf(Effector) then ('effector') else
+if element.oclIsTypeOf(Transmitter) then ('transmitters') else
+'UNKNOWN'
+endif
+endif
+endif
+/]

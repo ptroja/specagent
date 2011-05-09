@@ -1,5 +1,6 @@
 [comment encoding = UTF-8 /]
 [module agent_buffers('http://multirobotsystem/1.0')/]
+[import utils/]
 
 [template inputData_Types (buffers : Set(InputBuffer)) ]
 [if buffers->notEmpty()]
@@ -7,15 +8,15 @@
 package inputs is
    [for (aBuffer : InputBuffer | buffers)]
    --  Data type of this input buffer
-   package [aBuffer.name/]_t is
+   package [aBuffer.name/] is
       subtype Data_Type is [aBuffer.type/];
-   end [aBuffer.name/]_t;
+   end [aBuffer.name/];
    [/for]
 
    --  Aggregate record data type with inputs of this component
    type Data_Type is record
       [for (aBuffer : InputBuffer | buffers)]
-      [aBuffer.name/] : [aBuffer.name/]_t.Data_Type;
+      [aBuffer.name/] : inputs.[aBuffer.name/].Data_Type;
       [/for]
    end record;
 end inputs;
@@ -30,15 +31,15 @@ end inputs;
 package outputs is
 [for (aBuffer : OutputBuffer | buffers)]
    --  Data type of this output buffer
-   package [aBuffer.name/]_t is
+   package [aBuffer.name/] is
       subtype Data_Type is [aBuffer.type/];
-   end [aBuffer.name/]_t;
+   end [aBuffer.name/];
 [/for]
 
    --  Aggregate record data type with outputs of this component
    type Data_Type is record
       [for (aBuffer : OutputBuffer | buffers)]
-      [aBuffer.name/] : [aBuffer.name/]_t.Data_Type;
+      [aBuffer.name/] : outputs.[aBuffer.name/].Data_Type;
       [/for]
    end record;
 end outputs;
@@ -53,7 +54,7 @@ end outputs;
 package inputs is
    type Data_Type is record
       [for (element : IOElement | elements->select(inputs->notEmpty()))]
-      [element.name/] : [element.name/]_t.inputs.Data_Type;
+      [element.name/] : [ioElementTypeAsString(element)/].[element.name/].inputs.Data_Type;
       [/for]
    end record;
 end inputs;
@@ -70,38 +71,38 @@ package Agent_[anAgent.name/]_Buffers is
    pragma Remote_Types;
 
    [if effector->notEmpty()]
-   package effector_t is
+   package effector is
       [inputData_Types(effector.inputs)/]
       [outputData_Types(effector.outputs)/]
-   end effector_t;
+   end effector;
    [else]
    --  There in no effector defined for this agent 
    [/if]
 
    [if sensors->notEmpty()]
-   package sensors_t is
+   package sensors is
       [for (aSensor : Sensor | sensors)]
-      package [aSensor.name/]_t is
+      package [aSensor.name/] is
          [inputData_Types(inputs)/]
          [outputData_Types(outputs)/]
-      end [aSensor.name/]_t;
+      end [aSensor.name/];
       [/for]
       [aggregateSubsystemInputTypes(sensors)/] 
-   end sensors_t;
+   end sensors;
    [else]
    --  There are no sensors defined for this agent
    [/if]
 
    [if transmitters->notEmpty()]
-   package transmitters_t is
+   package transmitters is
       [for (aTransmitter : Transmitter | transmitters)]
-      package [aTransmitter.name/]_t is
+      package [aTransmitter.name/] is
          [inputData_Types(inputs)/]
          [outputData_Types(outputs)/]
-      end [aTransmitter.name/]_t;
+      end [aTransmitter.name/];
       [/for]
       [aggregateSubsystemInputTypes(transmitters)/]      
-   end transmitters_t;
+   end transmitters;
    [else]
    --  There are no transmitters defined for this agent
    [/if]
@@ -110,13 +111,13 @@ package Agent_[anAgent.name/]_Buffers is
    package input is
       type Data_Type is record
          [if effector.inputs->notEmpty()]
-         effector     : effector_t.inputs.Data_Type;
+         effector     : Agent_[anAgent.name/]_Buffers.effector.inputs.Data_Type;
          [/if]
          [if sensors->notEmpty()]
-         sensors      : sensors_t.inputs.Data_Type;
+         sensors      : Agent_[anAgent.name/]_Buffers.sensors.inputs.Data_Type;
          [/if]
          [if transmitters.inputs->notEmpty()]
-         transmitters : transmitters_t.inputs.Data_Type;
+         transmitters : Agent_[anAgent.name/]_Buffers.transmitters.inputs.Data_Type;
          [/if]
       end record;
    end input;
