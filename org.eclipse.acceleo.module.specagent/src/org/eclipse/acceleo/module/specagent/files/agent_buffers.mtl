@@ -20,7 +20,7 @@ package inputs is
    --  Aggregate record data type with inputs of this component
    type Data_Type is record
       [for (aBuffer : InputBuffer | buffers)]
-      [aBuffer.name/] : [aBuffer.name/].Data_Type;
+      [aBuffer.name/] : inputs.[aBuffer.name/].Data_Type;
       [/for]
    end record;
 end inputs;
