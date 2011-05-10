@@ -7,6 +7,7 @@
 [import project/]
 [import task_termination_monitor/]
 [import makefile_nxt/]
+[import generic_data_buffer/]
 
 [template public system2ada(aSystem : System)]
 
@@ -31,6 +32,7 @@ end System_[aSystem.name/];
 [makefile_nxt(aSystem)/]
 
 [task_termination_monitor()/]
+[generic_data_buffer()/]
 
 [agent_spec(anAgent)/]
 [agent_body(anAgent)/]
