@@ -45,7 +45,7 @@ package outputs is
    --  Aggregate record data type with outputs of this component
    type Data_Type is record
       [for (opaque : OpaqueData | buffers)]
-      [opaque.name/] : outputs.[opaque.name/].Data_Type;
+      [opaque.name/] : outputs.[opaque.name/].Buffer_Package.Buffer_Type;
       [/for]
    end record;
 end outputs;

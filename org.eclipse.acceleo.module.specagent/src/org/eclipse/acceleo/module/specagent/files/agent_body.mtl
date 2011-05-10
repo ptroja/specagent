@@ -95,10 +95,31 @@ end SharedInputDataBuffers;
  True[/if]
 [/template]
 
+[template clearBufferFlags (anAgent : Agent) ]
+procedure Clear_Buffer_Flags
+  (buffer : out Agent_[anAgent.name/]_Buffers.output.Data_Type) is
+begin
+   [for (buffer : OutputBuffer | effector.outputs)]
+   buffer.effector.[buffer.name/].MarkAsUsed;
+   [/for]
+   [for (aSensor : Sensor | sensors)]
+   [for (buffer : OutputBuffer | aSensor.outputs)]
+   buffer.sensors.[aSensor.name/].[buffer.name/].MarkAsUsed;
+   [/for]
+   [/for]
+   [for (aTransmitter : Transmitter | transmitters)]
+   [for (buffer : OutputBuffer | aTransmitter.outputs)]
+   buffer.transmitters.[aTransmitter.name/].[buffer.name/].MarkAsUsed;
+   [/for]
+   [/for]
+end Clear_Buffer_Flags;
+[/template]
+
 [template AgentTaskMainBody (anAgent : Agent) ]
 task body Main is
    blocking  : Boolean;
    inputData : Agent_[anAgent.name/]_Buffers.input.Data_Type;
+   outputData: Agent_[anAgent.name/]_Buffers.output.Data_Type;
    memoryData: Agent_[anAgent.name/]_Buffers.memory.Data_Type;
    fresh     : fresh_status_t := (others => False);
    arrived   : Boolean;
@@ -108,6 +129,7 @@ begin
    pragma Warnings(Off);
    inputData := inputData;
    memoryData := memoryData;
+   Clear_Buffer_Flags(outputData);
    pragma Warnings(On);
    
    loop
@@ -151,7 +173,11 @@ begin
                   separator ('               elsif')
                ] [checkStimuli(function.stimuli)/] then
                   -- Ada.Text_IO.Put_Line("transition_function_1...");
-                  Behavior_[aBehavior.name/].transition_function_[function.name/] (inputData, memoryData);
+                  Clear_Buffer_Flags(outputData);
+                  Behavior_[aBehavior.name/].transition_function_[function.name/]
+                    (inputData,
+                     outputData,
+                     memoryData);
                   [for (aInputBuffer : InputBuffer | function.stimuli)]
                   fresh ([bufferId(aInputBuffer)/]) := False;
                   [/for]
@@ -245,6 +271,8 @@ package body Agent_[anAgent.name/] is
    [InputDataBuffers()/]
 
    task Main;
+   
+   [clearBufferFlags()/]
 
    [AgentTaskMainBody()/]
 

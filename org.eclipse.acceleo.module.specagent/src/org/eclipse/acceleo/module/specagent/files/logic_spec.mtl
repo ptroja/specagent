@@ -10,7 +10,7 @@ with Agent_[anAgent.name/]_Buffers;
 package Agent_[anAgent.name/]_Behaviors is
    --  access to the subsystem data types 
    subtype Input_Data_Type is Agent_[anAgent.name/]_Buffers.input.Data_Type;
-   --  subtype Output_Data_Type is Agent_[anAgent.name/]_Buffers.output.Data_Type;
+   subtype Output_Data_Type is Agent_[anAgent.name/]_Buffers.output.Data_Type;
    subtype Memory_Data_Type is Agent_[anAgent.name/]_Buffers.memory.Data_Type;
    
    [for (aBehavior : Behaviour | anAgent.behaviours)]
@@ -32,6 +32,7 @@ package Agent_[anAgent.name/]_Behaviors is
       [for (function : TransitionFunction | aBehavior.functions)]      
       procedure transition_function_[function.name/]
         (input  : in Input_Data_Type;
+         output : out Output_Data_Type;
          memory : in out Memory_Data_Type);
       [/for]
    end Behavior_[aBehavior.name/];
