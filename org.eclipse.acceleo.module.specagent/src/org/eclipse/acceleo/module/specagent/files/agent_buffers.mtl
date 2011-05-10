@@ -2,6 +2,10 @@
 [module agent_buffers('http://multirobotsystem/1.0')/]
 [import utils/]
 
+[query opaquePackage(opaque : OpaqueData) : String =
+if opaque._package->notEmpty() then (opaque._package+'.') else ('') endif
+/]
+
 [template inputData_Types (buffers : Set(InputBuffer)) ]
 [if buffers->notEmpty()]
 --  Input buffers defined for this component
@@ -9,14 +13,14 @@ package inputs is
    [for (aBuffer : InputBuffer | buffers)]
    --  Data type of this input buffer
    package [aBuffer.name/] is
-      subtype Data_Type is [aBuffer.type/];
+      subtype Data_Type is [opaquePackage(aBuffer)/][aBuffer.type/];
    end [aBuffer.name/];
    [/for]
 
    --  Aggregate record data type with inputs of this component
    type Data_Type is record
       [for (aBuffer : InputBuffer | buffers)]
-      [aBuffer.name/] : inputs.[aBuffer.name/].Data_Type;
+      [aBuffer.name/] : [aBuffer.name/].Data_Type;
       [/for]
    end record;
 end inputs;
@@ -32,7 +36,7 @@ package outputs is
 [for (aBuffer : OutputBuffer | buffers)]
    --  Data type of this output buffer
    package [aBuffer.name/] is
-      subtype Data_Type is [aBuffer.type/];
+      subtype Data_Type is [opaquePackage(aBuffer)/][aBuffer.type/];
    end [aBuffer.name/];
 [/for]
 
@@ -65,7 +69,10 @@ end inputs;
 	
 [comment @main /]
 [file ('agent_'+anAgent.name+'_buffers.ads', false, 'UTF-8')]
--- TODO: with section
+-- include the packages of the input buffers
+[for (p : String | anAgent.allInputBuffers()->select(_package->notEmpty())._package->asSet())]
+with [p/];
+[/for]
 
 package Agent_[anAgent.name/]_Buffers is
    pragma Remote_Types;
