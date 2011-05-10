@@ -50,6 +50,14 @@ else
 endif
 /]
 
+[query public allOutputBuffers(anAgent : Agent) : Set(OutputBuffer) =
+if effector->notEmpty() then
+(effector.oclAsType(IOElement)->union(sensors.oclAsType(IOElement))->union(transmitters.oclAsType(IOElement))).outputs
+else
+(sensors.oclAsType(IOElement)->union(transmitters.oclAsType(IOElement))).outputs
+endif
+/]
+
 [query public ioElementTypeAsString(element : IOElement) : String =
 if element.oclIsTypeOf(Sensor) then ('sensors') else
 if element.oclIsTypeOf(Effector) then ('effector') else

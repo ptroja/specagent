@@ -99,14 +99,16 @@ end SharedInputDataBuffers;
 task body Main is
    blocking  : Boolean;
    inputData : Agent_[anAgent.name/]_Buffers.input.Data_Type;
+   memoryData: Agent_[anAgent.name/]_Buffers.memory.Data_Type;
    fresh     : fresh_status_t := (others => False);
    arrived   : Boolean;
 begin
    --  Note: data buffer should be already initialized.
    --  Do an assignment to eliminate a compilation warning. 
-   pragma Warnings(Off, inputData);
+   pragma Warnings(Off);
    inputData := inputData;
-   pragma Warnings(On, inputData);
+   memoryData := memoryData;
+   pragma Warnings(On);
    
    loop
 
@@ -114,11 +116,11 @@ begin
       before ('   if')
       separator ('   elsif')
       after('   end if;\n')
-   ] (Behavior_[aBehavior.name/].initial_condition (inputData)) then
+   ] (Behavior_[aBehavior.name/].initial_condition (inputData, memoryData)) then
 
       blocking := False;
 
-      while (not Behavior_[aBehavior.name/].terminal_condition (inputData)) loop
+      while (not Behavior_[aBehavior.name/].terminal_condition (inputData, memoryData)) loop
 
          if blocking then
             SharedInputDataBuffers.BlockForSingleMessage
@@ -149,7 +151,7 @@ begin
                   separator ('               elsif')
                ] [checkStimuli(function.stimuli)/] then
                   -- Ada.Text_IO.Put_Line("transition_function_1...");
-                  Behavior_[aBehavior.name/].transition_function_[function.name/] (inputData);
+                  Behavior_[aBehavior.name/].transition_function_[function.name/] (inputData, memoryData);
                   [for (aInputBuffer : InputBuffer | function.stimuli)]
                   fresh ([bufferId(aInputBuffer)/]) := False;
                   [/for]
