@@ -87,6 +87,14 @@ protected body SharedInputDataBuffers is
 end SharedInputDataBuffers;
 [/template]
 
+[template checkStimuli (stimuli : Set(InputBuffer)) ]
+[if stimuli->notEmpty()]
+[for (buffer : InputBuffer | stimuli)
+   separator (' and')
+] fresh ([bufferId(buffer)/])[/for][else]
+ True[/if]
+[/template]
+
 [template AgentTaskMainBody (anAgent : Agent) ]
 task body Main is
    blocking  : Boolean;
@@ -94,8 +102,13 @@ task body Main is
    fresh     : fresh_status_t := (others => False);
    arrived   : Boolean;
 begin
-   --  Note: data buffer should be already initialized
-   --  inputData.sensor_X1.X1 := 0;
+   --  Note: data buffer should be already initialized.
+   --  Do an assignment to eliminate a compilation warning. 
+   pragma Warnings(Off, inputData);
+   inputData := inputData;
+   pragma Warnings(On, inputData);
+   
+   loop
 
    [for (aBehavior : Behaviour | behaviours)
       before ('   if')
@@ -130,21 +143,29 @@ begin
                -- (1) Check every variant
                -- (2) Call the transition function
                -- (3) mark the condition buffers as used
+               [if aBehavior.functions->notEmpty()]
                [for (function : TransitionFunction | aBehavior.functions)
                   before ('               if')
                   separator ('               elsif')
-                  after('               end if;\n')
-               ] fresh (X1) then
+               ] [checkStimuli(function.stimuli)/] then
                   -- Ada.Text_IO.Put_Line("transition_function_1...");
-                  fresh (X1) := False;
+                  Behavior_[aBehavior.name/].transition_function_[function.name/] (inputData);
+                  [for (aInputBuffer : InputBuffer | function.stimuli)]
+                  fresh ([bufferId(aInputBuffer)/]) := False;
+                  [/for]
                [/for]
-               --  else
-               --  blocking := True;
-               --  end if;
+               else
+                  blocking := True;
+               end if;
+               [else]
+               blocking := True;
+               [/if]
             end if;
          end if;
       end loop;
    [/for]
+   
+   end loop;
 end Main;
 [/template]
 

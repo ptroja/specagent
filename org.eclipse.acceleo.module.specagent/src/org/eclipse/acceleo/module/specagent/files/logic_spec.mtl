@@ -18,7 +18,9 @@ package Agent_[anAgent.name/]_Behaviors is
       function terminal_condition (current_state : in Agent_[anAgent.name/]_Buffers.input.Data_Type) return Boolean;
 
       --  Transition functions
-      -- ...
+      [for (function : TransitionFunction | aBehavior.functions)]      
+      procedure transition_function_[function.name/] (current_state : in Agent_[anAgent.name/]_Buffers.input.Data_Type);
+      [/for]
    end Behavior_[aBehavior.name/];
    [/for]
 

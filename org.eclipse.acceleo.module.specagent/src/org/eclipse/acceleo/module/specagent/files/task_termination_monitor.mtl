@@ -8,39 +8,47 @@
 [file ('start_up.ads', false, 'UTF-8')]
 package Start_Up is
    pragma Elaborate_Body;
-end;
+end Start_Up;
 [/file]
 
 [file ('start_up.adb', false, 'UTF-8')]
 with Ada.Task_Identification; use Ada.Task_Identification;
-with Ada.Task_Termination; use Ada.Task_Termination;
-with Ada.Exceptions; use Ada.Exceptions;
+with Ada.Task_Termination;    use Ada.Task_Termination;
+with Ada.Exceptions;          use Ada.Exceptions;
 
 with Ada.Text_IO; use Ada.Text_IO;
 
 package body Start_Up is
    protected Grim_Reaper is
-      procedure Last_Gasp(C: Cause_Of_Termination; T: Task_Id; X: Exception_Occurrence);
+      procedure Last_Gasp
+        (C : Cause_Of_Termination;
+         T : Task_Id;
+         X : Exception_Occurrence);
    end Grim_Reaper;
-   
+
    protected body Grim_Reaper is
-      procedure Last_Gasp(C: Cause_Of_Termination; T: Task_Id; X: Exception_Occurrence) is
+      procedure Last_Gasp
+        (C : Cause_Of_Termination;
+         T : Task_Id;
+         X : Exception_Occurrence)
+      is
 
       begin
          case C is
-         when Normal => null;
-         when Abnormal =>
-            Put_Line("Something nasty happened to task ");
-            Put_Line(Image(T));
-         when Unhandled_Exception =>
-            Put_Line("Unhandled exception occurred in task ");
-            Put_Line(Image(T));
-            Put_Line(Exception_Information(X));
+            when Normal =>
+               null;
+            when Abnormal =>
+               Put_Line ("Something nasty happened to task ");
+               Put_Line (Image (T));
+            when Unhandled_Exception =>
+               Put_Line ("Unhandled exception occurred in task ");
+               Put_Line (Image (T));
+               Put_Line (Exception_Information (X));
          end case;
       end Last_Gasp;
    end Grim_Reaper;
 begin
-   Set_Dependents_Fallback_Handler(Grim_Reaper.Last_Gasp'Access);
+   Set_Dependents_Fallback_Handler (Grim_Reaper.Last_Gasp'Access);
 end Start_Up;
 [/file]
 	
