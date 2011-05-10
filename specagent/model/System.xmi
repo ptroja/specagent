@@ -2,9 +2,9 @@
 <multirobotsystem:System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:multirobotsystem="http://multirobotsystem/1.0" name="sample">
   <agents name="a1" description="">
     <effector name="e1">
-      <inputs type="Integer" package="" name="x1"/>
-      <inputs type="Integer" package="" name="x2"/>
-      <inputs type="Integer" package="" name="x3"/>
+      <inputs type="Integer" name="x1"/>
+      <inputs type="Integer" name="x2"/>
+      <inputs type="Integer" name="x3"/>
       <outputs type="Integer" name="y1"/>
     </effector>
     <behaviours name="b1">
