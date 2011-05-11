@@ -18,7 +18,7 @@ package body effector is
 end effector;
 [else]
 --  there are no RCI to forward for the effector inputs
-[/if]   
+[/if]
 
 [if sensors.inputs->notEmpty()]
 --  forward RCI of the sensor inputs
@@ -52,7 +52,7 @@ package body transmitters is
          procedure Send(item : in Data_Type) is
          begin
             Input_Buffers.Send_[bufferId(aInputBuffer)/](item);
-         end Send;         
+         end Send;
       end [aInputBuffer.name/];
       [/for]
    end [aTransmitter.name/];

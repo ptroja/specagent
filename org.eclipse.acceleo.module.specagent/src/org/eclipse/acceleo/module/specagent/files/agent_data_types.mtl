@@ -110,7 +110,7 @@ package Agent_[anAgent.name/]_Data_Types is
       [outputData_Types(effector.outputs)/]
    end effector;
    [else]
-   --  There in no effector defined for this agent 
+   --  There in no effector defined for this agent
    [/if]
 
    [if sensors->notEmpty()]
@@ -122,7 +122,7 @@ package Agent_[anAgent.name/]_Data_Types is
       end [aSensor.name/];
       [/for]
       [aggregateSubsystemInputTypes(sensors)/]
-      [aggregateSubsystemOutputTypes(sensors)/] 
+      [aggregateSubsystemOutputTypes(sensors)/]
    end sensors;
    [else]
    --  There are no sensors defined for this agent
@@ -137,7 +137,7 @@ package Agent_[anAgent.name/]_Data_Types is
       end [aTransmitter.name/];
       [/for]
       [aggregateSubsystemInputTypes(transmitters)/]
-      [aggregateSubsystemOutputTypes(transmitters)/]       
+      [aggregateSubsystemOutputTypes(transmitters)/]
    end transmitters;
    [else]
    --  There are no transmitters defined for this agent
@@ -172,7 +172,7 @@ package Agent_[anAgent.name/]_Data_Types is
          [/if]
       end record;
    end output;
-   
+
    --  Internal memory state data record
    package memory is
       type Data_Type is record

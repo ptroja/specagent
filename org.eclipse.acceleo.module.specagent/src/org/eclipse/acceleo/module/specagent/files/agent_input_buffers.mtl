@@ -3,7 +3,7 @@
 [import utils/]
 
 [template agent_input_buffers_spec(anAgent : Agent)]
-[if hasInputBuffers(anAgent)] 
+[if hasInputBuffers(anAgent)]
 -- Buffer identifiers
 type buffer_id is (
 [for (buffer : InputBuffer | allInputBuffers(anAgent)) separator (',\n') after('\n') ]
@@ -28,7 +28,7 @@ protected Input_Buffers is
    -- Procedures for transmitting data to particulars buffers
    [for (buffer : InputBuffer | allInputBuffers(anAgent))]
    procedure Send_[bufferId(buffer)/] (item : in Agent_[anAgent.name/]_Data_Types.[inputBufferDataType(buffer)/]);
-   [/for] 
+   [/for]
 private
    -- Internal, protected copy of the data
    buffer_state : Agent_[anAgent.name/]_Data_Types.input.Data_Type;
@@ -37,7 +37,7 @@ private
    -- Flag for speedup check of the buffers status
    -- note: this flag is also required for a Ravenscar profile
    not_empty : Boolean := False;
-end Input_Buffers;   
+end Input_Buffers;
 [/template]
 
 [template agent_input_buffers_body(anAgent : Agent)]
@@ -93,7 +93,7 @@ protected body Input_Buffers is
       fresh_state ([bufferId(buffer)/]) := True;
       not_empty        := True;
    end Send_[bufferId(buffer)/];
-   [/for]   
+   [/for]
 
 end Input_Buffers;
 [/template]
@@ -105,7 +105,7 @@ end Input_Buffers;
 -- with Ada.Text_IO;
 with Agent_[anAgent.name/]_Data_Types; use Agent_[anAgent.name/]_Data_Types;
 
-package Agent_[anAgent.name/]_Input_Buffers is 
+package Agent_[anAgent.name/]_Input_Buffers is
    [agent_input_buffers_spec(anAgent)/]
 end Agent_[anAgent.name/]_Input_Buffers;
 [/file]	
@@ -115,7 +115,7 @@ end Agent_[anAgent.name/]_Input_Buffers;
 -- with Ada.Text_IO;
 with Agent_[anAgent.name/]_Data_Types; use Agent_[anAgent.name/]_Data_Types;
 
-package body Agent_[anAgent.name/]_Input_Buffers is 
+package body Agent_[anAgent.name/]_Input_Buffers is
    [agent_input_buffers_body(anAgent)/]
 end Agent_[anAgent.name/]_Input_Buffers;
 [/file]

@@ -43,7 +43,7 @@ begin
       Agent_[anAgent.name/]_effector.[buffer.name/].Send
         (buffer.effector.[buffer.name/].Get);
    end if;
-   
+
    [/for]
    [for (aSensor : Sensor | sensors->select(outputs->notEmpty()))]
    --  send new settings to sensor [aSensor.name/]
@@ -51,8 +51,8 @@ begin
    if buffer.sensors.[aSensor.name/].[buffer.name/].isSet then
       Agent_[anAgent.name/]_sensor_[aSensor.name/].[buffer.name/].Send
         (buffer.sensors.[aSensor.name/].[buffer.name/].Get);
-   end if; 
-   
+   end if;
+
    [/for]
    [/for]
    [for (aTransmitter : Transmitter | transmitters->select(outputs->notEmpty()))]
@@ -190,12 +190,12 @@ package body Agent_[anAgent.name/]_Task is
 
    [if behaviours.functions->notEmpty()]
    [clearBufferFlags()/]
-   
+
    [sendResults()/]
-   
+
    [/if]
    task Main is
-      --  limit the thread storage size for the NXT 
+      --  limit the thread storage size for the NXT
       --  pragma Storage_Size(2048);
    end Main;
 

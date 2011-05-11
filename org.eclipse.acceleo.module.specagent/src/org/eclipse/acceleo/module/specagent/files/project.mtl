@@ -16,7 +16,7 @@ project [aSystem.name/] is
    package Compiler is
       for Default_Switches ("ada") use ("-g", "-O2", "-gnat05");
    end Compiler;
-   
+
    --  Enable the Ravenscar profile
    package Builder is
       for Global_Configuration_Pragmas use "./gnat.adc";
