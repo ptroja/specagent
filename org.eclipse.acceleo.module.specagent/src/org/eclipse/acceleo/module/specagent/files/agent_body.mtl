@@ -2,230 +2,7 @@
 [module agent_body('http://multirobotsystem/1.0')/]
 [import utils/]
 
-[template InputDataBuffers (anAgent : Agent) ]
--- Shared buffer type for holding data of asynchronous writes to the agent
-protected SharedInputDataBuffers is
-   -- Entry for conditional receive of data from a single buffer
-   entry BlockForSingleMessage
-     (state : out Agent_[anAgent.name/]_Data_Types.input.Data_Type;
-      fresh : out fresh_status_t);
-   -- Entry for conditional receive of data from a single buffer
-   procedure PeekForSingleMessage
-     (state   : out Agent_[anAgent.name/]_Data_Types.input.Data_Type;
-      fresh   : out fresh_status_t;
-      arrived : out Boolean);
-   -- Procedures for transmitting data to particulars buffers
-   [for (buffer : InputBuffer | allInputBuffers(anAgent))]
-   procedure Send_[bufferId(buffer)/] (item : in Agent_[anAgent.name/]_Data_Types.[inputBufferDataType(buffer)/]);
-   [/for] 
-private
-   -- Internal, protected copy of the data
-   buffer_state : Agent_[anAgent.name/]_Data_Types.input.Data_Type;
-   -- State of the buffers
-   fresh_state : fresh_status_t := (others => False);
-   -- Flag for speedup check of the buffers status
-   -- note: this flag is also required for a Ravenscar profile
-   not_empty : Boolean := False;
-end SharedInputDataBuffers;
-
-----------------------------
--- SharedInputDataBuffers --
-----------------------------
-
-protected body SharedInputDataBuffers is
-   procedure PeekForSingleMessage
-     (state   : out Agent_[anAgent.name/]_Data_Types.input.Data_Type;
-      fresh   : out fresh_status_t;
-      arrived : out Boolean) is
-   begin
-      if not_empty then
-         -- Pick up data from a single buffer
-         [for (buffer : InputBuffer | allInputBuffers(anAgent))
-            before ('         if')
-            separator ('         elsif')
-            after('         end if;\n')
-            ] fresh ([bufferId(buffer)/]) then
-            state.[inputBufferData(buffer)/]  := buffer_state.[inputBufferData(buffer)/];
-            fresh ([bufferId(buffer)/])       := True;
-            fresh_state ([bufferId(buffer)/]) := False;
-         [/for]
-
-         -- Update the 'empty' flag
-         not_empty := False;
-         Update_Empty_Flag : for id in buffer_id'Range loop
-            if fresh_state (id) then
-               not_empty := True;
-               exit Update_Empty_Flag;
-            end if;
-         end loop Update_Empty_Flag;
-
-         arrived := True;
-      else
-         arrived := False;
-      end if;
-   end PeekForSingleMessage;
-
-   entry BlockForSingleMessage
-     (state : out Agent_[anAgent.name/]_Data_Types.input.Data_Type;
-      fresh : out fresh_status_t) when not_empty
-   is
-      arrived : Boolean;
-   begin
-      PeekForSingleMessage (state, fresh, arrived);
-   end BlockForSingleMessage;
-
-   [for (buffer : InputBuffer | allInputBuffers(anAgent))]
-   procedure Send_[bufferId(buffer)/]
-      (item : in Agent_[anAgent.name/]_Data_Types.[inputBufferDataType(buffer)/]) is
-   begin
-      buffer_state.[inputBufferData(buffer)/] := item;
-      fresh_state ([bufferId(buffer)/]) := True;
-      not_empty        := True;
-   end Send_[bufferId(buffer)/];
-   [/for]   
-
-end SharedInputDataBuffers;
-[/template]
-
-[template checkStimuli (stimuli : Set(InputBuffer)) ]
-[if stimuli->notEmpty()]
-[for (buffer : InputBuffer | stimuli)
-   separator (' and')
-] fresh ([bufferId(buffer)/])[/for][else]
- True[/if]
-[/template]
-
-[template clearBufferFlags (anAgent : Agent) ]
-procedure Clear_Buffer_Flags
-  (buffer : out Agent_[anAgent.name/]_Data_Types.output.Data_Type) is
-begin
-   [for (buffer : OutputBuffer | effector.outputs)]
-   buffer.effector.[buffer.name/].MarkAsUsed;
-   [/for]
-   [for (aSensor : Sensor | sensors)]
-   [for (buffer : OutputBuffer | aSensor.outputs)]
-   buffer.sensors.[aSensor.name/].[buffer.name/].MarkAsUsed;
-   [/for]
-   [/for]
-   [for (aTransmitter : Transmitter | transmitters)]
-   [for (buffer : OutputBuffer | aTransmitter.outputs)]
-   buffer.transmitters.[aTransmitter.name/].[buffer.name/].MarkAsUsed;
-   [/for]
-   [/for]
-end Clear_Buffer_Flags;
-[/template]
-
-[template sendResults (anAgent : Agent) ]
-procedure Send_Results
-  (buffer : out Agent_[anAgent.name/]_Data_Types.output.Data_Type) is
-begin
-   [if hasOutputBuffers(anAgent)]
-   [for (buffer : OutputBuffer | effector.outputs)]
-   --  FIXME: buffer.effector.[buffer.name/].Get;
-   [/for]
-   [for (aSensor : Sensor | sensors)]
-   [for (buffer : OutputBuffer | aSensor.outputs)]
-   --  FIXME: buffer.sensors.[aSensor.name/].[buffer.name/].Get;
-   [/for]
-   [/for]
-   [for (aTransmitter : Transmitter | transmitters)]
-   [for (buffer : OutputBuffer | aTransmitter.outputs)]
-   --  Agent_[aTransmitter.remote.name/].transmitters.[aTransmitter.name/].[buffer.name/].Send(buffer.[aTransmitter.name/].[buffer.name/].Get);
-   [/for]
-   [/for]
-   null;
-   [else]
-   --  there are no output buffers in this agent
-   null;
-   [/if]
-end Send_Results;
-[/template]
-
-[template AgentTaskMainBody (anAgent : Agent) ]
-task body Main is
-   blocking  : Boolean;
-   inputData : Agent_[anAgent.name/]_Data_Types.input.Data_Type;
-   [if behaviours.functions->notEmpty()]
-   outputData: Agent_[anAgent.name/]_Data_Types.output.Data_Type;
-   [/if]
-   memoryData: Agent_[anAgent.name/]_Data_Types.memory.Data_Type;
-   fresh     : fresh_status_t := (others => False);
-   arrived   : Boolean;
-begin
-   --  Note: data buffer should be already initialized.
-   --  Do an assignment to eliminate a compilation warning. 
-   pragma Warnings(Off);
-   inputData := inputData;
-   memoryData := memoryData;
-   pragma Warnings(On);
-   
-   loop
-
-   [for (aBehavior : Behaviour | behaviours)
-      before ('   if')
-      separator ('   elsif')
-      after('   end if;\n')
-   ] (Behavior_[aBehavior.name/].initial_condition (inputData, memoryData)) then
-
-      blocking := False;
-
-      while (not Behavior_[aBehavior.name/].terminal_condition (inputData, memoryData)) loop
-
-         if blocking then
-            SharedInputDataBuffers.BlockForSingleMessage
-              (inputData,
-               fresh);
-            blocking := False;
-         else
-            SharedInputDataBuffers.PeekForSingleMessage
-              (inputData,
-               fresh,
-               arrived);
-
-            if arrived then
-               blocking := False;
-            else
-               -- if (...) then f1(state);
-               -- elsif (...) then f2(state);
-               -- elsif (...) then ...(state);
-               -- else blocking := true;
-               -- end if;
-
-               -- (1) Check every variant
-               -- (2) Call the transition function
-               -- (3) mark the condition buffers as used
-               [if aBehavior.functions->notEmpty()]
-               [for (function : TransitionFunction | aBehavior.functions)
-                  before ('               if')
-                  separator ('               elsif')
-               ] [checkStimuli(function.stimuli)/] then
-                  -- Ada.Text_IO.Put_Line("transition_function_1...");
-                  Clear_Buffer_Flags(outputData);
-                  Behavior_[aBehavior.name/].transition_function_[function.name/]
-                    (inputData,
-                     outputData,
-                     memoryData);
-                  Send_Results(outputData);
-                  [for (aInputBuffer : InputBuffer | function.stimuli)]
-                  fresh ([bufferId(aInputBuffer)/]) := False;
-                  [/for]
-               [/for]
-               else
-                  blocking := True;
-               end if;
-               [else]
-               blocking := True;
-               [/if]
-            end if;
-         end if;
-      end loop;
-   [/for]
-   
-   end loop;
-end Main;
-[/template]
-
-[template public AgentRCI (anAgent : Agent) ]
+[template AgentRCI (anAgent : Agent) ]
 [if effector.inputs->notEmpty()]
 --  forward RCI of the effector inputs
 package body effector is
@@ -234,7 +11,7 @@ package body effector is
       use Agent_[anAgent.name/]_Data_Types.effector.inputs.[aInputBuffer.name/];
       procedure Send(item : in Data_Type) is
       begin
-         SharedInputDataBuffers.Send_[bufferId(aInputBuffer)/](item);
+         Input_Buffers.Send_[bufferId(aInputBuffer)/](item);
       end Send;
    end [aInputBuffer.name/];
    [/for]
@@ -253,7 +30,7 @@ package body sensors is
          use Agent_[anAgent.name/]_Data_Types.sensors.[aSensor.name/].inputs.[aInputBuffer.name/];
          procedure Send(item : in Data_Type) is
          begin
-            SharedInputDataBuffers.Send_[bufferId(aInputBuffer)/](item);
+            Input_Buffers.Send_[bufferId(aInputBuffer)/](item);
          end Send;
       end [aInputBuffer.name/];
       [/for]
@@ -274,7 +51,7 @@ package body transmitters is
          use Agent_[anAgent.name/]_Data_Types.transmitters.[aTransmitter.name/].inputs.[aInputBuffer.name/];
          procedure Send(item : in Data_Type) is
          begin
-            SharedInputDataBuffers.Send_[bufferId(aInputBuffer)/](item);
+            Input_Buffers.Send_[bufferId(aInputBuffer)/](item);
          end Send;         
       end [aInputBuffer.name/];
       [/for]
@@ -292,25 +69,9 @@ end transmitters;
 [file ('agent_'+anAgent.name+'.adb', false, 'UTF-8')]
 -- with Ada.Text_IO;
 with Agent_[anAgent.name/]_Data_Types; use Agent_[anAgent.name/]_Data_Types;
-with Agent_[anAgent.name/]_Behaviors; use Agent_[anAgent.name/]_Behaviors;
---  access to the remote cooperating agents
-[for (remote : Agent | transmitters.remote->asSet())]
-with Agent_[remote.name/];
-[/for]
+with Agent_[anAgent.name/]_Input_Buffers; use Agent_[anAgent.name/]_Input_Buffers;
 
 package body Agent_[anAgent.name/] is
-
-   [InputDataBuffers()/]
-
-   task Main;
-   
-   [if behaviours.functions->notEmpty()]
-   [clearBufferFlags()/]  
-   [sendResults()/]
-   [/if]
-
-   [AgentTaskMainBody()/]
-
    [AgentRCI()/]
 end Agent_[anAgent.name/];
 [/file]

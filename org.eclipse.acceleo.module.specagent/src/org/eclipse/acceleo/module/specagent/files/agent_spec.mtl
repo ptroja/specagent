@@ -62,17 +62,6 @@ package Agent_[anAgent.name/] is
    --  transmitters does not have any input buffers 
    [/if]   
 
-private
-   [if hasInputBuffers(anAgent)] 
-   -- Buffer identifiers
-   type buffer_id is (
-   [for (buffer : InputBuffer | allInputBuffers(anAgent)) separator (',\n') after('\n') ]
-      [bufferId(buffer)/][/for]
-   );
-
-   -- Status of the particular buffers
-   type fresh_status_t is array (buffer_id) of Boolean;
-   [/if]
 end Agent_[anAgent.name/];
 [/file]
 	
