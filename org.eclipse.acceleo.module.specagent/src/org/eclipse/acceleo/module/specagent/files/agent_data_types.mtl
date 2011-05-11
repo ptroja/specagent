@@ -82,7 +82,7 @@ end outputs;
 [template public agent_data_types(anAgent : Agent)]
 	
 [comment @main /]
-[file ('agent_'+anAgent.name+'_buffers.ads', false, 'UTF-8')]
+[file ('agent_'+anAgent.name+'_data_types.ads', false, 'UTF-8')]
 -- the packages with the input buffer data types (may be empty)
 [for (p : String | anAgent.allInputBuffers()->select(_package->notEmpty())._package->asSet())]
 with [p/];
@@ -101,7 +101,7 @@ with [p/];
 with Data_Buffer;
 [/if]
 
-package Agent_[anAgent.name/]_Buffers is
+package Agent_[anAgent.name/]_Data_Types is
    pragma Remote_Types;
 
    [if effector->notEmpty()]
@@ -147,13 +147,13 @@ package Agent_[anAgent.name/]_Buffers is
    package input is
       type Data_Type is record
          [if effector.inputs->notEmpty()]
-         effector     : Agent_[anAgent.name/]_Buffers.effector.inputs.Data_Type;
+         effector     : Agent_[anAgent.name/]_Data_Types.effector.inputs.Data_Type;
          [/if]
          [if sensors.inputs->notEmpty()]
-         sensors      : Agent_[anAgent.name/]_Buffers.sensors.inputs.Data_Type;
+         sensors      : Agent_[anAgent.name/]_Data_Types.sensors.inputs.Data_Type;
          [/if]
          [if transmitters.inputs->notEmpty()]
-         transmitters : Agent_[anAgent.name/]_Buffers.transmitters.inputs.Data_Type;
+         transmitters : Agent_[anAgent.name/]_Data_Types.transmitters.inputs.Data_Type;
          [/if]
       end record;
    end input;
@@ -162,13 +162,13 @@ package Agent_[anAgent.name/]_Buffers is
    package output is
       type Data_Type is record
          [if effector.outputs->notEmpty()]
-         effector     : Agent_[anAgent.name/]_Buffers.effector.outputs.Data_Type;
+         effector     : Agent_[anAgent.name/]_Data_Types.effector.outputs.Data_Type;
          [/if]
          [if sensors.outputs->notEmpty()]
-         sensors      : Agent_[anAgent.name/]_Buffers.sensors.outputs.Data_Type;
+         sensors      : Agent_[anAgent.name/]_Data_Types.sensors.outputs.Data_Type;
          [/if]
          [if transmitters.outputs->notEmpty()]
-         transmitters : Agent_[anAgent.name/]_Buffers.transmitters.outputs.Data_Type;
+         transmitters : Agent_[anAgent.name/]_Data_Types.transmitters.outputs.Data_Type;
          [/if]
       end record;
    end output;
@@ -186,7 +186,7 @@ package Agent_[anAgent.name/]_Buffers is
       end record;
    end memory;
 
-end Agent_[anAgent.name/]_Buffers;
+end Agent_[anAgent.name/]_Data_Types;
 [/file]
 	
 [/template]

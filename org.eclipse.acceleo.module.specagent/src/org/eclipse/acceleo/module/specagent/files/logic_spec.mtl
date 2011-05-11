@@ -5,13 +5,13 @@
 	
 [comment @main /]
 [file ('agent_'+anAgent.name+'_behaviors.ads', false, 'UTF-8')]
-with Agent_[anAgent.name/]_Buffers;
+with Agent_[anAgent.name/]_Data_Types;
 
 package Agent_[anAgent.name/]_Behaviors is
    --  access to the subsystem data types 
-   subtype Input_Data_Type is Agent_[anAgent.name/]_Buffers.input.Data_Type;
-   subtype Output_Data_Type is Agent_[anAgent.name/]_Buffers.output.Data_Type;
-   subtype Memory_Data_Type is Agent_[anAgent.name/]_Buffers.memory.Data_Type;
+   subtype Input_Data_Type is Agent_[anAgent.name/]_Data_Types.input.Data_Type;
+   subtype Output_Data_Type is Agent_[anAgent.name/]_Data_Types.output.Data_Type;
+   subtype Memory_Data_Type is Agent_[anAgent.name/]_Data_Types.memory.Data_Type;
    
    [for (aBehavior : Behaviour | anAgent.behaviours)]
    --  sequential code and conditions of the behavior

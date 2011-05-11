@@ -6,7 +6,7 @@
 	
 [comment @main /]
 [file ('agent_'+anAgent.name+'.ads', false, 'UTF-8')]
-with Agent_[anAgent.name/]_Buffers;
+with Agent_[anAgent.name/]_Data_Types;
 
 package Agent_[anAgent.name/] is
    -- This is remote interface to the agent
@@ -17,7 +17,7 @@ package Agent_[anAgent.name/] is
    package effector is
       [for (aInputBuffer : InputBuffer | effector.inputs)]
       package [aInputBuffer.name/] is
-         use Agent_[anAgent.name/]_Buffers.effector.inputs.[aInputBuffer.name/];
+         use Agent_[anAgent.name/]_Data_Types.effector.inputs.[aInputBuffer.name/];
          procedure Send(item : in Data_Type);
       end [aInputBuffer.name/];
       [/for]
@@ -33,7 +33,7 @@ package Agent_[anAgent.name/] is
       package [aSensor.name/] is
          [for (aInputBuffer : InputBuffer | aSensor.inputs)]
          package [aInputBuffer.name/] is
-            use Agent_[anAgent.name/]_Buffers.sensors.[aSensor.name/].inputs.[aInputBuffer.name/];
+            use Agent_[anAgent.name/]_Data_Types.sensors.[aSensor.name/].inputs.[aInputBuffer.name/];
             procedure Send(item : in Data_Type);
          end [aInputBuffer.name/];
          [/for]
@@ -51,7 +51,7 @@ package Agent_[anAgent.name/] is
       package [aTransmitter.name/] is
          [for (aInputBuffer : InputBuffer | aTransmitter.inputs)]
          package [aInputBuffer.name/] is
-            use Agent_[anAgent.name/]_Buffers.transmitters.[aTransmitter.name/].inputs.[aInputBuffer.name/];
+            use Agent_[anAgent.name/]_Data_Types.transmitters.[aTransmitter.name/].inputs.[aInputBuffer.name/];
             procedure Send(item : in Data_Type);
          end [aInputBuffer.name/];
          [/for]
