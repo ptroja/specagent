@@ -8,7 +8,7 @@
       <outputs type="Integer" name="y1"/>
     </effector>
     <behaviours name="b1">
-      <functions name="f1"/>
+      <functions name="f1" stimuli="//@agents[name='a1']/@effector/@inputs[name='x3']"/>
       <initial/>
       <terminal/>
     </behaviours>

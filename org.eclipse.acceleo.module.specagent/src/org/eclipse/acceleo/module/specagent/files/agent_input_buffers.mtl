@@ -53,7 +53,7 @@ protected body Input_Buffers is
             before ('         if')
             separator ('         elsif')
             after('         end if;\n')
-            ] fresh ([bufferId(buffer)/]) then
+            ] fresh_state ([bufferId(buffer)/]) then
             state.[inputBufferData(buffer)/]  := buffer_state.[inputBufferData(buffer)/];
             fresh ([bufferId(buffer)/])       := True;
             fresh_state ([bufferId(buffer)/]) := False;

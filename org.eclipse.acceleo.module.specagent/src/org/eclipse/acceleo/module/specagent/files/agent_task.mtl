@@ -12,7 +12,8 @@
 
 [template clearBufferFlags (anAgent : Agent) ]
 procedure Clear_Buffer_Flags
-  (buffer : out Agent_[anAgent.name/]_Data_Types.output.Data_Type) is
+  (buffer : out Agent_[anAgent.name/]_Data_Types.output.Data_Type)
+is
 begin
    [for (buffer : OutputBuffer | effector.outputs)]
    buffer.effector.[buffer.name/].MarkAsUsed;
@@ -32,7 +33,8 @@ end Clear_Buffer_Flags;
 
 [template sendResults (anAgent : Agent) ]
 procedure Send_Results
-  (buffer : out Agent_[anAgent.name/]_Data_Types.output.Data_Type) is
+  (buffer : out Agent_[anAgent.name/]_Data_Types.output.Data_Type)
+is
 begin
    [if hasOutputBuffers(anAgent)]
    [for (buffer : OutputBuffer | effector.outputs)]
@@ -58,84 +60,83 @@ end Send_Results;
 
 [template AgentTaskMainBody (anAgent : Agent) ]
 task body Main is
-   blocking  : Boolean;
-   inputData : Agent_[anAgent.name/]_Data_Types.input.Data_Type;
+   blocking   : Boolean;
+   inputData  : Agent_[anAgent.name/]_Data_Types.input.Data_Type;
    [if behaviours.functions->notEmpty()]
-   outputData: Agent_[anAgent.name/]_Data_Types.output.Data_Type;
+   outputData : Agent_[anAgent.name/]_Data_Types.output.Data_Type;
    [/if]
-   memoryData: Agent_[anAgent.name/]_Data_Types.memory.Data_Type;
-   fresh     : fresh_status_t := (others => False);
-   arrived   : Boolean;
+   memoryData : Agent_[anAgent.name/]_Data_Types.memory.Data_Type;
+   fresh      : fresh_status_t := (others => False);
+   arrived    : Boolean;
 begin
    --  Note: data buffer should be already initialized.
-   --  Do an assignment to eliminate a compilation warning. 
-   pragma Warnings(Off);
-   inputData := inputData;
+   --  Do an assignment to eliminate a compilation warning.
+   pragma Warnings (Off);
+   inputData  := inputData;
    memoryData := memoryData;
-   pragma Warnings(On);
-   
+   pragma Warnings (On);
+
    loop
 
-   [for (aBehavior : Behaviour | behaviours)
-      before ('   if')
-      separator ('   elsif')
-      after('   end if;\n')
-   ] (Behavior_[aBehavior.name/].initial_condition (inputData, memoryData)) then
+      [for (aBehavior : Behaviour | behaviours)
+         before ('      if')
+         separator ('      elsif')
+         after('      end if;\n')
+      ] (Behavior_[aBehavior.name/].initial_condition (inputData, memoryData)) then
 
-      blocking := False;
+         blocking := False;
 
-      while (not Behavior_[aBehavior.name/].terminal_condition (inputData, memoryData)) loop
+         while (not Behavior_[aBehavior.name/].terminal_condition (inputData, memoryData))
+         loop
 
-         if blocking then
-            Input_Buffers.BlockForSingleMessage
-              (inputData,
-               fresh);
-            blocking := False;
-         else
-            Input_Buffers.PeekForSingleMessage
-              (inputData,
-               fresh,
-               arrived);
-
-            if arrived then
+            if blocking then
+               Input_Buffers.BlockForSingleMessage (inputData, fresh);
                blocking := False;
             else
-               -- if (...) then f1(state);
-               -- elsif (...) then f2(state);
-               -- elsif (...) then ...(state);
-               -- else blocking := true;
-               -- end if;
+               Input_Buffers.PeekForSingleMessage
+                 (inputData,
+                  fresh,
+                  arrived);
 
-               -- (1) Check every variant
-               -- (2) Call the transition function
-               -- (3) mark the condition buffers as used
-               [if aBehavior.functions->notEmpty()]
-               [for (function : TransitionFunction | aBehavior.functions)
-                  before ('               if')
-                  separator ('               elsif')
-               ] [checkStimuli(function.stimuli)/] then
-                  -- Ada.Text_IO.Put_Line("transition_function_1...");
-                  Clear_Buffer_Flags(outputData);
-                  Behavior_[aBehavior.name/].transition_function_[function.name/]
-                    (inputData,
-                     outputData,
-                     memoryData);
-                  Send_Results(outputData);
-                  [for (aInputBuffer : InputBuffer | function.stimuli)]
-                  fresh ([bufferId(aInputBuffer)/]) := False;
-                  [/for]
-               [/for]
+               if arrived then
+                  blocking := False;
                else
+                  -- if (...) then f1(state);
+                  -- elsif (...) then f2(state);
+                  -- elsif (...) then ...(state);
+                  -- else blocking := true;
+                  -- end if;
+
+                  -- (1) Check every variant
+                  -- (2) Call the transition function
+                  -- (3) mark the condition buffers as used
+                  [if aBehavior.functions->notEmpty()]
+                  [for (function : TransitionFunction | aBehavior.functions)
+                     before ('                  if')
+                     separator ('                  elsif')
+                  ] [checkStimuli(function.stimuli)/] then
+                     -- Ada.Text_IO.Put_Line("transition_function_1...");
+                     Clear_Buffer_Flags (outputData);
+                     Behavior_[aBehavior.name/].transition_function_[function.name/]
+                       (inputData,
+                        outputData,
+                        memoryData);
+                     Send_Results (outputData);
+                     [for (aInputBuffer : InputBuffer | function.stimuli)]
+                     fresh ([bufferId(aInputBuffer)/]) := False;
+                     [/for]
+                  [/for]
+                  else
+                     blocking := True;
+                  end if;
+                  [else]
                   blocking := True;
+                  [/if]
                end if;
-               [else]
-               blocking := True;
-               [/if]
             end if;
-         end if;
-      end loop;
-   [/for]
-   
+         end loop;
+      [/for]
+
    end loop;
 end Main;
 [/template]
@@ -163,7 +164,7 @@ with Agent_[remote.name/];
 package body Agent_[anAgent.name/]_Task is
 
    [if behaviours.functions->notEmpty()]
-   [clearBufferFlags()/]  
+   [clearBufferFlags()/]
    [sendResults()/]
    [/if]
 
