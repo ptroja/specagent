@@ -10,7 +10,7 @@ if opaque._package->notEmpty() then (opaque._package+'.') else ('') endif
 [if buffers->notEmpty()]
 --  Input buffers defined for this component
 package inputs is
-   [for (opaque : OpaqueData | buffers)]
+   [for (opaque : InputBuffer | buffers)]
    --  Data type of this input buffer
    package [opaque.name/] is
       subtype Data_Type is [opaquePackage(opaque)/][opaque.type/];
@@ -19,7 +19,7 @@ package inputs is
 
    --  Aggregate record data type with inputs of this component
    type Data_Type is record
-      [for (opaque : OpaqueData | buffers)]
+      [for (opaque : InputBuffer | buffers)]
       [opaque.name/] : inputs.[opaque.name/].Data_Type;
       [/for]
    end record;
@@ -33,7 +33,7 @@ end inputs;
 [if buffers->notEmpty()]
 --  Output buffers defined for this component
 package outputs is
-[for (opaque : OpaqueData | buffers)]
+[for (opaque : OutputBuffer | buffers)]
    --  Data type of this output buffer
    package [opaque.name/] is
       --  Instantiate the data buffer package
@@ -44,7 +44,7 @@ package outputs is
 
    --  Aggregate record data type with outputs of this component
    type Data_Type is record
-      [for (opaque : OpaqueData | buffers)]
+      [for (opaque : OutputBuffer | buffers)]
       [opaque.name/] : outputs.[opaque.name/].Buffer_Package.Buffer_Type;
       [/for]
    end record;
@@ -177,7 +177,7 @@ package Agent_[anAgent.name/]_Buffers is
    package memory is
       type Data_Type is record
          [if anAgent.memory->notEmpty()]
-         [for (opaque : OpaqueData | anAgent.memory)]
+         [for (opaque : InternalData | anAgent.memory)]
          [opaque.name/] : [opaquePackage(opaque)/][opaque.type/];
          [/for]
          [else]
