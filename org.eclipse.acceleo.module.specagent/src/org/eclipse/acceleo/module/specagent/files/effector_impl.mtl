@@ -16,7 +16,7 @@ package Agent_[aAgent.name/]_Effector is
    [for (buffer : OutputBuffer | aAgent.effector.outputs)]
    package [buffer.name/] is
       use Agent_[aAgent.name/]_Data_Types.effector.outputs.[buffer.name/];
-      procedure Send(item : in Data_Type);
+      procedure Send (item : in Data_Type);
    end [buffer.name/];
    [/for]
 
