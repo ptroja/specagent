@@ -41,9 +41,9 @@ end Data_Buffer;
 [file ('data_buffer.adb', false, 'UTF-8')]
 package body Data_Buffer is
 
-   procedure Set (Buffer : out Buffer_Type; An_Item : in  Data_Type) is
+   procedure Set (Buffer : out Buffer_Type; An_Item : in Data_Type) is
    begin
-      Buffer.Data := An_Item;
+      Buffer.Data  := An_Item;
       Buffer.Fresh := True;
    end Set;
 

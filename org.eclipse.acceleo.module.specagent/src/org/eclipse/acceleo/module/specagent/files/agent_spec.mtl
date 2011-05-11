@@ -18,7 +18,7 @@ package Agent_[anAgent.name/] is
       [for (aInputBuffer : InputBuffer | effector.inputs)]
       package [aInputBuffer.name/] is
          use Agent_[anAgent.name/]_Data_Types.effector.inputs.[aInputBuffer.name/];
-         procedure Send(item : in Data_Type);
+         procedure Send (item : in Data_Type);
       end [aInputBuffer.name/];
       [/for]
    end effector;
@@ -34,7 +34,7 @@ package Agent_[anAgent.name/] is
          [for (aInputBuffer : InputBuffer | aSensor.inputs)]
          package [aInputBuffer.name/] is
             use Agent_[anAgent.name/]_Data_Types.sensors.[aSensor.name/].inputs.[aInputBuffer.name/];
-            procedure Send(item : in Data_Type);
+            procedure Send (item : in Data_Type);
          end [aInputBuffer.name/];
          [/for]
       end [aSensor.name/];
@@ -52,14 +52,14 @@ package Agent_[anAgent.name/] is
          [for (aInputBuffer : InputBuffer | aTransmitter.inputs)]
          package [aInputBuffer.name/] is
             use Agent_[anAgent.name/]_Data_Types.transmitters.[aTransmitter.name/].inputs.[aInputBuffer.name/];
-            procedure Send(item : in Data_Type);
+            procedure Send (item : in Data_Type);
          end [aInputBuffer.name/];
          [/for]
       end [aTransmitter.name/];
    [/for]
    end transmitters;
    [else]
-   --  transmitters does not have any input buffers 
+   --  transmitters does not have any input buffers
    [/if]   
 
 end Agent_[anAgent.name/];

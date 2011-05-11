@@ -21,7 +21,7 @@
 
 --  Set up task death notification
 with Start_Up;
-pragma Elaborate_All(Start_Up);
+pragma Elaborate_All (Start_Up);
 
 [for (anAgent : Agent | agents)]
 with Agent_[anAgent.name/];
