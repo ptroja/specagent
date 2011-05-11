@@ -1,5 +1,5 @@
 [comment encoding = UTF-8 /]
-[module agent_buffers('http://multirobotsystem/1.0')/]
+[module agent_data_types('http://multirobotsystem/1.0')/]
 [import utils/]
 
 [query opaquePackage(opaque : OpaqueData) : String =
@@ -79,7 +79,7 @@ end outputs;
 [/if]
 [/template]
 
-[template public agent_buffers(anAgent : Agent)]
+[template public agent_data_types(anAgent : Agent)]
 	
 [comment @main /]
 [file ('agent_'+anAgent.name+'_buffers.ads', false, 'UTF-8')]
@@ -190,3 +190,4 @@ end Agent_[anAgent.name/]_Buffers;
 [/file]
 	
 [/template]
+

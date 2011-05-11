@@ -25,24 +25,24 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 
 /**
- * Entry point of the 'Agent_buffers' generation module.
+ * Entry point of the 'Agent_data_types' generation module.
  *
  * @generated
  */
-public class Agent_buffers extends AbstractAcceleoGenerator {
+public class Agent_data_types extends AbstractAcceleoGenerator {
 	/**
 	 * The name of the module.
 	 *
 	 * @generated
 	 */
-	public static final String MODULE_FILE_NAME = "agent_buffers";
+	public static final String MODULE_FILE_NAME = "agent_data_types";
 	
 	/**
 	 * The name of the templates that are to be generated.
 	 *
 	 * @generated
 	 */
-	public static final String[] TEMPLATE_NAMES = { "agent_buffers", };
+	public static final String[] TEMPLATE_NAMES = { "agent_data_types", };
 
 	/**
 	 * Allows the public constructor to be used. Note that a generator created
@@ -58,7 +58,7 @@ public class Agent_buffers extends AbstractAcceleoGenerator {
 	 *
 	 * @generated
 	 */
-	public Agent_buffers() {
+	public Agent_data_types() {
     // Empty implementation
   }
 
@@ -78,7 +78,7 @@ public class Agent_buffers extends AbstractAcceleoGenerator {
 	 *             the model cannot be loaded.
 	 * @generated
 	 */
-	public Agent_buffers(URI modelURI, File targetFolder,
+	public Agent_data_types(URI modelURI, File targetFolder,
 			List<? extends Object> arguments) throws IOException {
     initialize(modelURI, targetFolder, arguments);
   }
@@ -99,7 +99,7 @@ public class Agent_buffers extends AbstractAcceleoGenerator {
 	 *             This can be thrown in two scenarios : the module cannot be found, or it cannot be loaded.
 	 * @generated
 	 */
-	public Agent_buffers(EObject model, File targetFolder,
+	public Agent_data_types(EObject model, File targetFolder,
 			List<? extends Object> arguments) throws IOException {
     initialize(model, targetFolder, arguments);
   }
@@ -122,7 +122,7 @@ public class Agent_buffers extends AbstractAcceleoGenerator {
         for (int i = 2; i < args.length; i++) {
           arguments.add(args[i]);
         }
-        Agent_buffers generator = new Agent_buffers(modelURI, folder, arguments);
+        Agent_data_types generator = new Agent_data_types(modelURI, folder, arguments);
         generator.doGenerate(new BasicMonitor());
       }
     } catch (IOException e) {
