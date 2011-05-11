@@ -171,6 +171,14 @@
   <children xmi:type="notation:Node" xmi:id="_B-Kt7Vb0EeCXwqISGNZFEw" type="1001">
     <children xmi:type="notation:Node" xmi:id="_B-LU8Vb0EeCXwqISGNZFEw" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_B-LU8lb0EeCXwqISGNZFEw" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_0L1F8Xu_EeCGA8TzPZHbqw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="MultiRobotSystem.ecore#//InputBuffer/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_0L1F8nu_EeCGA8TzPZHbqw"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_1IwBMHu_EeCGA8TzPZHbqw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="MultiRobotSystem.ecore#//InputBuffer/description"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_1IwBMXu_EeCGA8TzPZHbqw"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_B-LU81b0EeCXwqISGNZFEw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_B-LU9Fb0EeCXwqISGNZFEw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_B-LU9Vb0EeCXwqISGNZFEw"/>
@@ -187,6 +195,14 @@
   <children xmi:type="notation:Node" xmi:id="_B-L8AFb0EeCXwqISGNZFEw" type="1001">
     <children xmi:type="notation:Node" xmi:id="_B-L8A1b0EeCXwqISGNZFEw" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_B-L8BFb0EeCXwqISGNZFEw" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_3joIMHu_EeCGA8TzPZHbqw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="MultiRobotSystem.ecore#//OutputBuffer/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_3joIMXu_EeCGA8TzPZHbqw"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_4VrQMHu_EeCGA8TzPZHbqw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="MultiRobotSystem.ecore#//OutputBuffer/description"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_4VrQMXu_EeCGA8TzPZHbqw"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_B-L8BVb0EeCXwqISGNZFEw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_B-L8Blb0EeCXwqISGNZFEw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_B-L8B1b0EeCXwqISGNZFEw"/>
@@ -235,14 +251,6 @@
         <element xmi:type="ecore:EAttribute" href="MultiRobotSystem.ecore#//OpaqueData/package"/>
         <layoutConstraint xmi:type="notation:Location" xmi:id="_WBepwnmnEeCAfq4euFWE3w"/>
       </children>
-      <children xmi:type="notation:Node" xmi:id="_B-OYQFb0EeCXwqISGNZFEw" type="2001">
-        <element xmi:type="ecore:EAttribute" href="MultiRobotSystem.ecore#//OpaqueData/name"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_B-OYQVb0EeCXwqISGNZFEw"/>
-      </children>
-      <children xmi:type="notation:Node" xmi:id="_B-OYQlb0EeCXwqISGNZFEw" type="2001">
-        <element xmi:type="ecore:EAttribute" href="MultiRobotSystem.ecore#//OpaqueData/description"/>
-        <layoutConstraint xmi:type="notation:Location" xmi:id="_B-OYQ1b0EeCXwqISGNZFEw"/>
-      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_B-NKI1b0EeCXwqISGNZFEw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_B-NKJFb0EeCXwqISGNZFEw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_B-NKJVb0EeCXwqISGNZFEw"/>
@@ -259,6 +267,14 @@
   <children xmi:type="notation:Node" xmi:id="_B-NxMFb0EeCXwqISGNZFEw" type="1001">
     <children xmi:type="notation:Node" xmi:id="_B-NxM1b0EeCXwqISGNZFEw" type="4001"/>
     <children xmi:type="notation:Node" xmi:id="_B-NxNFb0EeCXwqISGNZFEw" type="5001">
+      <children xmi:type="notation:Node" xmi:id="_B-OYQFb0EeCXwqISGNZFEw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="MultiRobotSystem.ecore#//InternalData/name"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_B-OYQVb0EeCXwqISGNZFEw"/>
+      </children>
+      <children xmi:type="notation:Node" xmi:id="_B-OYQlb0EeCXwqISGNZFEw" type="2001">
+        <element xmi:type="ecore:EAttribute" href="MultiRobotSystem.ecore#//InternalData/description"/>
+        <layoutConstraint xmi:type="notation:Location" xmi:id="_B-OYQ1b0EeCXwqISGNZFEw"/>
+      </children>
       <styles xmi:type="notation:DrawerStyle" xmi:id="_B-NxNVb0EeCXwqISGNZFEw"/>
       <styles xmi:type="notation:SortingStyle" xmi:id="_B-NxNlb0EeCXwqISGNZFEw"/>
       <styles xmi:type="notation:FilteringStyle" xmi:id="_B-NxN1b0EeCXwqISGNZFEw"/>

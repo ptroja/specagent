@@ -24,6 +24,9 @@
     <transmitters name="t2" remote="a1">
       <outputs type="Integer" name="y1"/>
     </transmitters>
+    <transmitters name="t3" remote="a1">
+      <outputs type="Integer" name="foo"/>
+    </transmitters>
     <behaviours name="b1">
       <initial/>
       <terminal/>
