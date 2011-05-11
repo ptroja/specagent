@@ -168,7 +168,10 @@ package body Agent_[anAgent.name/]_Task is
    [sendResults()/]
    [/if]
 
-   task Main;
+   task Main is
+      --  limit the thread storage size for the NXT 
+      --  pragma Storage_Size(2048);
+   end Main;
 
    [AgentTaskMainBody()/]
 

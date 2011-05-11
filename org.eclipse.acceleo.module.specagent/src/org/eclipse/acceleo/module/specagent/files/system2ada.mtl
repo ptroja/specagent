@@ -10,6 +10,8 @@
 [import task_termination_monitor/]
 [import makefile_nxt/]
 [import generic_data_buffer/]
+[import effector_impl/]
+[import sensors_impl/]
 
 [template public system2ada(aSystem : System)]
 
@@ -46,6 +48,9 @@ end System_[aSystem.name/];
 [agent_body(anAgent)/]
 [logic_spec(anAgent)/]
 [agent_task(anAgent)/]
+
+[effector_impl(anAgent)/]
+[sensors_impl(anAgent)/]
 
 [/for]
 	
