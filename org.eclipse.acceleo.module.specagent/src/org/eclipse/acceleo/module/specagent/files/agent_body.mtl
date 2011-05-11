@@ -9,9 +9,9 @@ package body effector is
    [for (aInputBuffer : InputBuffer | effector.inputs)]
    package body [aInputBuffer.name/] is
       use Agent_[anAgent.name/]_Data_Types.effector.inputs.[aInputBuffer.name/];
-      procedure Send(item : in Data_Type) is
+      procedure Send (item : in Data_Type) is
       begin
-         Input_Buffers.Send_[bufferId(aInputBuffer)/](item);
+         Input_Buffers.Send_[bufferId(aInputBuffer)/] (item);
       end Send;
    end [aInputBuffer.name/];
    [/for]
@@ -28,9 +28,9 @@ package body sensors is
       [for (aInputBuffer : InputBuffer | aSensor.inputs)]
       package body [aInputBuffer.name/] is
          use Agent_[anAgent.name/]_Data_Types.sensors.[aSensor.name/].inputs.[aInputBuffer.name/];
-         procedure Send(item : in Data_Type) is
+         procedure Send (item : in Data_Type) is
          begin
-            Input_Buffers.Send_[bufferId(aInputBuffer)/](item);
+            Input_Buffers.Send_[bufferId(aInputBuffer)/] (item);
          end Send;
       end [aInputBuffer.name/];
       [/for]
@@ -49,9 +49,9 @@ package body transmitters is
       [for (aInputBuffer : InputBuffer | aTransmitter.inputs)]
       package body [aInputBuffer.name/] is
          use Agent_[anAgent.name/]_Data_Types.transmitters.[aTransmitter.name/].inputs.[aInputBuffer.name/];
-         procedure Send(item : in Data_Type) is
+         procedure Send (item : in Data_Type) is
          begin
-            Input_Buffers.Send_[bufferId(aInputBuffer)/](item);
+            Input_Buffers.Send_[bufferId(aInputBuffer)/] (item);
          end Send;
       end [aInputBuffer.name/];
       [/for]
@@ -68,7 +68,7 @@ end transmitters;
 [comment @main /]
 [file ('agent_'+anAgent.name+'.adb', false, 'UTF-8')]
 -- with Ada.Text_IO;
-with Agent_[anAgent.name/]_Data_Types; use Agent_[anAgent.name/]_Data_Types;
+with Agent_[anAgent.name/]_Data_Types;    use Agent_[anAgent.name/]_Data_Types;
 with Agent_[anAgent.name/]_Input_Buffers; use Agent_[anAgent.name/]_Input_Buffers;
 
 package body Agent_[anAgent.name/] is
