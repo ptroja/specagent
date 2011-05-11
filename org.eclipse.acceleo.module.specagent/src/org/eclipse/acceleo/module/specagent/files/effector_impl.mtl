@@ -4,7 +4,7 @@
 [template public effector_impl(aAgent : Agent)]
 	
 [comment @main /]
-[if aAgent.effector->notEmpty()]
+[if aAgent.effector.outputs->notEmpty()]
 [file ('agent_'+aAgent.name+'_effector.ads', false, 'UTF-8')]
 with Agent_[aAgent.name/]_Data_Types;
 

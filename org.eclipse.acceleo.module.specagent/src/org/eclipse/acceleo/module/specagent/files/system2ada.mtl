@@ -19,6 +19,7 @@
 [file ('system_'+aSystem.name+'.adb', false, 'UTF-8')]
 -- with Ada.Text_IO;
 
+--  Set up task death notification
 with Start_Up;
 pragma Elaborate_All(Start_Up);
 
@@ -28,6 +29,11 @@ with Agent_[anAgent.name/];
 [for (anAgent : Agent | agents)]
 with Agent_[anAgent.name/]_Task;
 [/for]
+
+--  include packages with the user defined tasks (i.e. sensors, effectors)
+-- [protected('user_code')]
+--  with ...;
+-- [/protected]
 
 procedure System_[aSystem.name/] is
 begin

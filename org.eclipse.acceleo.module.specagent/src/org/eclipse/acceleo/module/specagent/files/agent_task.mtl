@@ -16,16 +16,16 @@ procedure Clear_Buffer_Flags
 is
 begin
    [for (buffer : OutputBuffer | effector.outputs)]
-   buffer.effector.[buffer.name/].MarkAsUsed;
+   buffer.effector.[buffer.name/].Unset;
    [/for]
    [for (aSensor : Sensor | sensors)]
    [for (buffer : OutputBuffer | aSensor.outputs)]
-   buffer.sensors.[aSensor.name/].[buffer.name/].MarkAsUsed;
+   buffer.sensors.[aSensor.name/].[buffer.name/].Unset;
    [/for]
    [/for]
    [for (aTransmitter : Transmitter | transmitters)]
    [for (buffer : OutputBuffer | aTransmitter.outputs)]
-   buffer.transmitters.[aTransmitter.name/].[buffer.name/].MarkAsUsed;
+   buffer.transmitters.[aTransmitter.name/].[buffer.name/].Unset;
    [/for]
    [/for]
 end Clear_Buffer_Flags;
@@ -33,23 +33,35 @@ end Clear_Buffer_Flags;
 
 [template sendResults (anAgent : Agent) ]
 procedure Send_Results
-  (buffer : out Agent_[anAgent.name/]_Data_Types.output.Data_Type)
+  (buffer : in Agent_[anAgent.name/]_Data_Types.output.Data_Type)
 is
 begin
    [if hasOutputBuffers(anAgent)]
+   --  send commands to the effector
    [for (buffer : OutputBuffer | effector.outputs)]
-   --  FIXME: buffer.effector.[buffer.name/].Get;
+   if buffer.effector.[buffer.name/].isSet then
+      Agent_[anAgent.name/]_effector.[buffer.name/].Send
+        (buffer.effector.[buffer.name/].Get);
+   end if;
+   
    [/for]
-   [for (aSensor : Sensor | sensors)]
+   [for (aSensor : Sensor | sensors->select(outputs->notEmpty()))]
+   --  send new settings to sensor [aSensor.name/]
    [for (buffer : OutputBuffer | aSensor.outputs)]
-   --  FIXME: buffer.sensors.[aSensor.name/].[buffer.name/].Get;
+   if buffer.sensors.[aSensor.name/].[buffer.name/].isSet then
+      Agent_[anAgent.name/]_sensor_[aSensor.name/].[buffer.name/].Send
+        (buffer.sensors.[aSensor.name/].[buffer.name/].Get);
+   end if; 
+   
    [/for]
    [/for]
-   [for (aTransmitter : Transmitter | transmitters)]
+   [for (aTransmitter : Transmitter | transmitters->select(outputs->notEmpty()))]
+   --  send new data to transmitter [aTransmitter.name/]
    [for (buffer : OutputBuffer | aTransmitter.outputs)]
    --  Agent_[aTransmitter.remote.name/].transmitters.[aTransmitter.name/].[buffer.name/].Send(buffer.[aTransmitter.name/].[buffer.name/].Get);
    [/for]
    [/for]
+   --  FIXME: empty handler for the transmitters
    null;
    [else]
    --  there are no output buffers in this agent
@@ -156,18 +168,32 @@ end Agent_[anAgent.name/]_Task;
 with Agent_[anAgent.name/]_Data_Types; use Agent_[anAgent.name/]_Data_Types;
 with Agent_[anAgent.name/]_Input_Buffers; use Agent_[anAgent.name/]_Input_Buffers;
 with Agent_[anAgent.name/]_Behaviors; use Agent_[anAgent.name/]_Behaviors;
+
+[if anAgent.effector.outputs->notEmpty()]
+--  access to the effector
+with Agent_[anAgent.name/]_Effector;
+[/if]
+[if anAgent.sensors.outputs->notEmpty()]
+--  access to sensors
+[for (aSensor : Sensor | anAgent.sensors->select(outputs->notEmpty()))]
+with Agent_[anAgent.name/]_sensor_[aSensor.name/];
+[/for]
+[/if]
+[if (anAgent.transmitters.outputs->notEmpty())]
 --  access to the remote cooperating agents
-[for (remote : Agent | transmitters.remote->asSet())]
+[for (remote : Agent | transmitters->select(outputs->notEmpty()).remote->asSet())]
 with Agent_[remote.name/];
 [/for]
+[/if]
 
 package body Agent_[anAgent.name/]_Task is
 
    [if behaviours.functions->notEmpty()]
    [clearBufferFlags()/]
+   
    [sendResults()/]
+   
    [/if]
-
    task Main is
       --  limit the thread storage size for the NXT 
       --  pragma Storage_Size(2048);

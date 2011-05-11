@@ -24,10 +24,10 @@ package Data_Buffer is
    function Get (Buffer : in Buffer_Type) return Data_Type;
 
    -- Mark the buffer as not fresh
-   procedure MarkAsUsed (Buffer : in out Buffer_Type);
+   procedure Unset (Buffer : in out Buffer_Type);
 
    -- Check if the value in buffer has not been used
-   function isFresh (Buffer : in Buffer_Type) return Boolean;
+   function isSet (Buffer : in Buffer_Type) return Boolean;
 private
    --  Single buffer with a data type
    type Buffer_Type is tagged record
@@ -52,15 +52,15 @@ package body Data_Buffer is
       return Buffer.Data;
    end Get;
 
-   procedure MarkAsUsed (Buffer : in out Buffer_Type) is
+   procedure Unset (Buffer : in out Buffer_Type) is
    begin
       Buffer.Fresh := False;
-   end MarkAsUsed;
+   end Unset;
 
-   function isFresh (Buffer : in Buffer_Type) return Boolean is
+   function isSet (Buffer : in Buffer_Type) return Boolean is
    begin
       return Buffer.Fresh;
-   end isFresh;
+   end isSet;
 
 end Data_Buffer;
 [/file]
