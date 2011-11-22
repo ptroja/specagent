@@ -155,9 +155,11 @@ namespace task {
  */
 
 typedef struct _IO {
+
 	[if getMpAgent(aSystem).transmitters->notEmpty()]
 	//! Composite data type for inter-agent communication subsystem 
 	typedef struct _transmitters {
+	
 		[for (aTransmitter : Transmitter | getMpAgent(aSystem).transmitters)]
 		//! Composite data type for transmitter's data buffers  
 		typedef struct _[aTransmitter.remote.name/] {
@@ -181,6 +183,7 @@ typedef struct _IO {
 		
 		//! Transmitter's data structure itself
 		[aTransmitter.remote.name/]_t [aTransmitter.remote.name/];
+		
 		[/for]
 
 	} transmitters_t;
