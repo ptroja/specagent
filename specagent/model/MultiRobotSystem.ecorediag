@@ -347,7 +347,7 @@
     <styles xmi:type="notation:FontStyle" xmi:id="_B-QNeFb0EeCXwqISGNZFEw" fontColor="4210752" fontName="Sans" fontHeight="10"/>
     <element xmi:type="ecore:EReference" href="MultiRobotSystem.ecore#//Agent/transmitters"/>
     <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_B-QNeVb0EeCXwqISGNZFEw" points="[5, 2, -184, -76]$[138, 57, -51, -21]"/>
-    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_B_jN8Fb0EeCXwqISGNZFEw" id="(0.9717514124293786,0.7191011235955056)"/>
+    <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_B_jN8Fb0EeCXwqISGNZFEw" id="(0.9882352941176471,0.9012345679012346)"/>
     <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_B_jN8Vb0EeCXwqISGNZFEw" id="(0.4971751412429379,1.0)"/>
   </edges>
   <edges xmi:type="notation:Edge" xmi:id="_B-Q0gFb0EeCXwqISGNZFEw" type="3002" source="_B-EAMFb0EeCXwqISGNZFEw" target="_B-JfwFb0EeCXwqISGNZFEw">
