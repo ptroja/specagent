@@ -1,0 +1,253 @@
+[comment encoding = UTF-8 /]
+[module mp_agent('http://multirobotsystem/1.0')/]
+
+[query public getMpAgent(aSystem : System) : Agent =
+aSystem.agents->select(name='mp')->first()
+/]
+
+[template public agentIncludePackages(anAgent : Agent)]
+[for (aPackage : String | 
+	transmitters.inputs._package->
+	union(transmitters.outputs._package)->
+	union(sensors.inputs._package)->
+	union(sensors.outputs._package)->
+	asSet())]  
+#include "[aPackage/]"
+[/for]
+[for (aPackage : String | 
+	effector.inputs._package->
+	union(effector.outputs._package)->
+	asSet())]  
+#include "[aPackage/]"
+[/for]
+[/template]
+
+[template public mp_agent(aSystem : System)]
+	
+[comment @main /]
+[file ('mp_t_'+aSystem.name+'.cc', false, 'UTF-8')]
+// [protected('user defined headers')]
+#include <boost/foreach.hpp>
+
+#include "base/lib/typedefs.h"
+#include "base/lib/impconst.h"
+#include "base/lib/com_buf.h"
+
+#include "ecp_mp_g_spkm.h"
+
+#include "robot/shead/mp_r_shead1.h"
+#include "robot/shead/mp_r_shead2.h"
+#include "robot/spkm/mp_r_spkm1.h"
+#include "robot/spkm/mp_r_spkm2.h"
+#include "robot/smb/mp_r_smb1.h"
+#include "robot/smb/mp_r_smb2.h"
+// [/protected]
+
+#include "base/lib/sr/srlib.h"
+#include "base/mp/mp_task.h"
+
+#include "mp_t_[aSystem.name/].h"
+
+namespace mrrocpp {
+namespace mp {
+namespace task {
+
+task* return_created_mp_task(lib::configurator &_config)
+{
+	return new [aSystem.name/](_config);
+}
+
+[aSystem.name/]::[aSystem.name/](lib::configurator &_config) :
+		task(_config)
+{
+	// Create optional Input buffers
+	[for (aTransmitter : Transmitter | getMpAgent(aSystem).transmitters->select(inputs->notEmpty()))]
+	if(IS_MP_ROBOT_ACTIVE([aTransmitter.remote.name/])) {
+		[for (anInputBuffer : InputBuffer | aTransmitter.inputs)] 
+		IO.transmitters.[aTransmitter.remote.name/].[anInputBuffer.name/].Create(*this, lib::[aTransmitter.remote.name/]::ROBOT_NAME+"[anInputBuffer.name/]");
+		[/for]
+	}
+	[/for]
+
+	// Call the robot activation so we can support only the active ones
+	create_robots();
+
+	// Create optional Output buffers
+	[for (aTransmitter : Transmitter | getMpAgent(aSystem).transmitters->select(outputs->notEmpty()))]
+	if(is_robot_activated(lib::[aTransmitter.remote.name/]::ROBOT_NAME)) {
+		[for (anOutputBuffer : OutputBuffer | aTransmitter.outputs)] 
+		IO.transmitters.[aTransmitter.remote.name/].[aTransmitter.name/].Create(robot_m['[lib::'+aTransmitter.remote.name+'::ROBOT_NAME]'/]->ecp, [aTransmitter.name/]);
+		[/for]
+	}
+	[/for]	
+	
+	// [protected ('Initialize internal memory variables')]
+	// [/protected]
+}
+
+// powolanie robotow w zaleznosci od zawartosci pliku konfiguracyjnego
+void swarmitfix::create_robots()
+{
+	[for (aRemoteAgent : Agent | getMpAgent(aSystem).transmitters.remote)]
+	ACTIVATE_MP_ROBOT([aRemoteAgent.name/]);
+	[/for]
+}
+
+void swarmitfix::main_task_algorithm(void)
+{
+	sr_ecp_msg->message("swarmitfix task started");
+
+	do {
+		if (current_plan_status == ONGOING) {
+			do {
+				if(ReceiveSingleMessage(false)) {
+					if(current_plan_status != ONGOING)
+						break;
+				}
+
+				if(robot_m[lib::spkm1::ROBOT_NAME]->reply.isFresh()) {
+					robot_m[lib::spkm1::ROBOT_NAME]->reply.markAsUsed();
+
+					current_workers_status[lib::spkm1::ROBOT_NAME] = IDLE;
+				}
+
+			} while (true);
+
+			// ...
+			continue;
+		}
+
+		if (current_plan_status == FAILURE) {
+			// ...
+			continue;
+		}
+		// Fallback to wait for change in the agent state
+		ReceiveSingleMessage(true);
+	} while(true);
+
+	sr_ecp_msg->message("END");
+}
+
+} // namespace task
+} // namespace mp
+} // namespace mrrocpp
+[/file]
+
+[file ('mp_t_'+aSystem.name+'.h', false, 'UTF-8')]
+#if !defined(__MP_T_[aSystem.name.toUpper()/]_H)
+#define __MP_T_[aSystem.name.toUpper()/]_H
+
+#include <boost/shared_ptr.hpp>
+#include <boost/unordered_map.hpp>
+#include <boost/ptr_container/ptr_unordered_map.hpp>
+
+#include "base/lib/impconst.h"
+
+[agentIncludePackages(getMpAgent(aSystem))/]
+
+namespace mrrocpp {
+namespace mp {
+namespace task {
+
+/** @defgroup [aSystem.name/] [aSystem.name/]
+ *  @ingroup application
+ *  @{
+ */
+
+typedef struct _IO {
+	[if getMpAgent(aSystem).transmitters->notEmpty()]
+	//! Composite data type for inter-agent communication subsystem 
+	typedef struct _transmitters {
+		[for (aTransmitter : Transmitter | getMpAgent(aSystem).transmitters)]
+		//! Composite data type for transmitter's data buffers  
+		typedef struct _[aTransmitter.remote.name/] {
+			[for (anInputBuffer : InputBuffer | aTransmitter.inputs)]
+			//! Data type of input buffer 
+			typedef InputPtr<[anInputBuffer.type/]> [anInputBuffer.name/]_t;
+
+			//! InputBuffer: [anInputBuffer.description/]
+			[anInputBuffer.name/]_t [anInputBuffer.name/];
+			
+			[/for]
+			[for (anOutputBuffer : InputBuffer | aTransmitter.inputs)]
+			//! Data type of output buffer
+			typedef OutputPtr<[anOutputBuffer.type/]> [anOutputBuffer.name/]_t;
+
+			//! OutputBuffer: [anOutputBuffer.description/]
+			[anOutputBuffer.name/]_t [anOutputBuffer.name/];
+			
+			[/for]
+		} [aTransmitter.remote.name/]_t;
+		
+		//! Transmitter's data structure itself
+		[aTransmitter.remote.name/]_t [aTransmitter.remote.name/];
+		[/for]
+
+	} transmitters_t;
+	
+	//! Inter-agent communication subsystem itself
+	transmitters_t transmitters;
+	[/if]
+} IO_t;
+
+class [aSystem.name/] : public task
+{
+private:
+	// [protected('Internal memory variables')]
+	//! Type for plan realization status
+	typedef enum _PLAN_STATUS { ONGOING, FAILURE } PlanStatus;
+
+	//! Type for worker (ECP) agent status
+	typedef enum _WORKER_STATUS { IDLE, BUSY } WorkerStatus;
+
+	//! Associative container type for worker status
+	typedef boost::unordered_map<const lib::robot_name_t, WorkerStatus> WorkersStatus;
+	// [/protected]
+	
+	[for (iData : InternalData | getMpAgent(aSystem).memory)]
+	[if (iData.description->notEmpty())]
+	//! [iData.description/]
+	[else]
+	//! Internal memory variable	
+	[/if]
+	[iData.type/] [iData.name/];	
+	[/for]
+
+	//! Input/Output subsystems
+	IO_t IO;
+	
+	[for (aBehaviour : Behaviour | getMpAgent(aSystem).behaviours)]
+	//! Initial condition: [aBehaviour.initial.description/]	  
+	bool [aBehaviour.name/]_initial_condition(void) const;
+	
+	//! Terminal condition: [aBehaviour.terminal.description/]	  
+	bool [aBehaviour.name/]_terminal_condition(void) const;
+	
+	[for (aTransFunct : TransitionFunction | aBehaviour.functions)]
+	//! Transition function: [aTransFunct.description/]
+	void [aBehaviour.name/]_[aTransFunct.name/](void);
+	
+	[/for]
+	[/for]
+
+public:
+	//! Constructor
+	[aSystem.name/](lib::configurator &_config);
+
+	/// utworzenie robotow
+	void create_robots(void);
+
+	// methods for mp template
+	void main_task_algorithm(void);
+};
+
+/** @} */// end of [aSystem.name/]
+
+} // namespace task
+} // namespace mp
+} // namespace mrrocpp
+
+#endif /* __MP_T_[aSystem.name.toUpper()/]_H */
+[/file]
+	
+[/template]
