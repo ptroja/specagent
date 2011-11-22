@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="ASCII"?>
+<multirobotsystem:System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:multirobotsystem="http://multirobotsystem/1.0" xmi:id="_KZCP0BHdEeGixpq8KRrJlg" name="swarmitfix" description="coordinator agent for the SwarmItFIX project">
+  <agents xmi:id="_nxsWcBHeEeGixpq8KRrJlg" name="mp">
+    <transmitters xmi:id="_FN-1UBHfEeGixpq8KRrJlg" description="Controller of the 1st PKM" remote="_sQ8wABHeEeGixpq8KRrJlg" name="spkm1">
+      <inputs xmi:id="_cf41kBHfEeGixpq8KRrJlg" type="lib::notification_t" package="base/lib/swarmtypes.h" name="notification" description="Status of the agent"/>
+      <outputs xmi:id="_c1yNEBHfEeGixpq8KRrJlg" type="lib::spkm::next_state_t" package="robot/spkm/dp_spkm.h" name="command" description="Command to execute"/>
+    </transmitters>
+    <transmitters xmi:id="_H40D4BHfEeGixpq8KRrJlg" description="Controller of the 2nd PKM" remote="_u5tiABHeEeGixpq8KRrJlg" name="spkm2">
+      <inputs xmi:id="_7WBcQBHfEeGixpq8KRrJlg" type="lib::notification_t" package="base/lib/swarmtypes.h" name="notification" description="Status of the agent"/>
+      <outputs xmi:id="_7WG70BHfEeGixpq8KRrJlg" type="lib::spkm::next_state_t" package="robot/spkm/dp_spkm.h" name="command" description="Command to execute"/>
+    </transmitters>
+    <transmitters xmi:id="_IO3MYBHfEeGixpq8KRrJlg" description="Controller of the 1st mobile base" remote="_voyOgBHeEeGixpq8KRrJlg" name="smb1">
+      <inputs xmi:id="_8WKDkBHfEeGixpq8KRrJlg" type="lib::notification_t" package="base/lib/swarmtypes.h" name="notification" description="Status of the agent"/>
+    </transmitters>
+    <transmitters xmi:id="_Ijn7cBHfEeGixpq8KRrJlg" description="Controller of the 2nd mobile base" remote="_voyOgBHeEeGixpq8KRrJlg" name="smb2">
+      <inputs xmi:id="_8hIkgBHfEeGixpq8KRrJlg" type="lib::notification_t" package="base/lib/swarmtypes.h" name="notification" description="Status of the agent"/>
+    </transmitters>
+    <transmitters xmi:id="_NBaYkBHjEeGixpq8KRrJlg" remote="_QDIdIBHjEeGixpq8KRrJlg" name="planner">
+      <inputs xmi:id="_TrdOsBHjEeGixpq8KRrJlg" type="lib::empty_t" name="trigger" description="Trigger execution of the next plan step"/>
+    </transmitters>
+    <behaviours xmi:id="_2ej2sBHiEeGixpq8KRrJlg" name="b1" description="Execute plan">
+      <functions xmi:id="_bzfFwBHjEeGixpq8KRrJlg" name="plan_progress" description="Progress with the next plan command" stimuli="_TrdOsBHjEeGixpq8KRrJlg"/>
+      <functions xmi:id="_quDAkBHjEeGixpq8KRrJlg" name="handle_spkm1_notification" description="Record notification message" stimuli="_cf41kBHfEeGixpq8KRrJlg"/>
+      <functions xmi:id="_-ARfMBHjEeGixpq8KRrJlg" name="handle_spkm2_notification" description="Record notification message" stimuli="_7WBcQBHfEeGixpq8KRrJlg"/>
+      <functions xmi:id="_-K2-kBHjEeGixpq8KRrJlg" name="handle_smb1_notification" description="Record notification message" stimuli="_8WKDkBHfEeGixpq8KRrJlg"/>
+      <functions xmi:id="_-SbmMBHjEeGixpq8KRrJlg" name="handle_smb2_notification" description="Record notification message" stimuli="_8hIkgBHfEeGixpq8KRrJlg"/>
+      <initial xmi:id="_4BJDwBHiEeGixpq8KRrJlg" description="Execute if the status in non-failure"/>
+      <terminal xmi:id="_5PuWwBHiEeGixpq8KRrJlg" description="Terminate in case of failure"/>
+    </behaviours>
+    <behaviours xmi:id="_nz30wRUgEeGXh9Gj8oM4Fw" name="b2" description="Stop all the agents in case of emergency">
+      <functions xmi:id="_47T20BUgEeGXh9Gj8oM4Fw" name="stop_all" description="Send stop commands to all the busy robots"/>
+      <initial xmi:id="_vO-UYBUgEeGXh9Gj8oM4Fw" description="Execute in case of emergency"/>
+      <terminal xmi:id="_zSsogBUgEeGXh9Gj8oM4Fw" description="Do not terminate (requires operator to restart the task)"/>
+    </behaviours>
+    <memory xmi:id="_zPblEBHeEeGixpq8KRrJlg" type="PlanStatus" package="" name="current_plan_status" description="Current plan status"/>
+    <memory xmi:id="_25DXIBHeEeGixpq8KRrJlg" type="WorkersStatus" name="current_workers_status" description="Current workers status"/>
+  </agents>
+  <agents xmi:id="_sQ8wABHeEeGixpq8KRrJlg" name="spkm1"/>
+  <agents xmi:id="_u5tiABHeEeGixpq8KRrJlg" name="spkm2"/>
+  <agents xmi:id="_vUVogBHeEeGixpq8KRrJlg" name="smb1"/>
+  <agents xmi:id="_voyOgBHeEeGixpq8KRrJlg" name="smb2"/>
+  <agents xmi:id="_QDIdIBHjEeGixpq8KRrJlg" name="planner"/>
+</multirobotsystem:System>
