@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="ASCII"?>
 <multirobotsystem:System xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:multirobotsystem="http://multirobotsystem/1.0" xmi:id="_KZCP0BHdEeGixpq8KRrJlg" name="swarmitfix" description="coordinator agent for the SwarmItFIX project">
   <agents xmi:id="_nxsWcBHeEeGixpq8KRrJlg" name="mp">
+    <sensors xmi:id="_M10C4RXQEeG7x6SUJ_mt6Q" description="Interface to the planner" name="planner">
+      <inputs xmi:id="_TrdOsBHjEeGixpq8KRrJlg" type="lib::empty_t" name="trigger" description="Trigger execution of the next plan step"/>
+    </sensors>
     <transmitters xmi:id="_FN-1UBHfEeGixpq8KRrJlg" description="Controller of the 1st PKM" remote="_sQ8wABHeEeGixpq8KRrJlg" name="spkm1">
       <inputs xmi:id="_cf41kBHfEeGixpq8KRrJlg" type="lib::notification_t" package="base/lib/swarmtypes.h" name="notification" description="Status of the agent"/>
       <outputs xmi:id="_c1yNEBHfEeGixpq8KRrJlg" type="lib::spkm::next_state_t" package="robot/spkm/dp_spkm.h" name="command" description="Command to execute"/>
@@ -9,14 +12,11 @@
       <inputs xmi:id="_7WBcQBHfEeGixpq8KRrJlg" type="lib::notification_t" package="base/lib/swarmtypes.h" name="notification" description="Status of the agent"/>
       <outputs xmi:id="_7WG70BHfEeGixpq8KRrJlg" type="lib::spkm::next_state_t" package="robot/spkm/dp_spkm.h" name="command" description="Command to execute"/>
     </transmitters>
-    <transmitters xmi:id="_IO3MYBHfEeGixpq8KRrJlg" description="Controller of the 1st mobile base" remote="_voyOgBHeEeGixpq8KRrJlg" name="smb1">
+    <transmitters xmi:id="_IO3MYBHfEeGixpq8KRrJlg" description="Controller of the 1st mobile base" remote="_vUVogBHeEeGixpq8KRrJlg" name="smb1">
       <inputs xmi:id="_8WKDkBHfEeGixpq8KRrJlg" type="lib::notification_t" package="base/lib/swarmtypes.h" name="notification" description="Status of the agent"/>
     </transmitters>
     <transmitters xmi:id="_Ijn7cBHfEeGixpq8KRrJlg" description="Controller of the 2nd mobile base" remote="_voyOgBHeEeGixpq8KRrJlg" name="smb2">
       <inputs xmi:id="_8hIkgBHfEeGixpq8KRrJlg" type="lib::notification_t" package="base/lib/swarmtypes.h" name="notification" description="Status of the agent"/>
-    </transmitters>
-    <transmitters xmi:id="_NBaYkBHjEeGixpq8KRrJlg" remote="_QDIdIBHjEeGixpq8KRrJlg" name="planner">
-      <inputs xmi:id="_TrdOsBHjEeGixpq8KRrJlg" type="lib::empty_t" name="trigger" description="Trigger execution of the next plan step"/>
     </transmitters>
     <behaviours xmi:id="_2ej2sBHiEeGixpq8KRrJlg" name="b1" description="Execute plan">
       <functions xmi:id="_bzfFwBHjEeGixpq8KRrJlg" name="plan_progress" description="Progress with the next plan command" stimuli="_TrdOsBHjEeGixpq8KRrJlg"/>
