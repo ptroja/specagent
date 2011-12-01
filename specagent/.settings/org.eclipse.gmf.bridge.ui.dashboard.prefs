@@ -1,0 +1,8 @@
+#Wed Nov 30 22:16:42 CET 2011
+eclipse.preferences.version=1
+gmf_dashboard/domainGenerationModel=platform\:/resource/specagent/model/MultiRobotSystem.genmodel
+gmf_dashboard/domainModel=platform\:/resource/specagent/model/MultiRobotSystem.ecore
+gmf_dashboard/generationModel=platform\:/resource/specagent/model/MultiRobotSystem.gmfgen
+gmf_dashboard/graphicalDefinitionModel=platform\:/resource/specagent/model/MultiRobotSystem.gmfgraph
+gmf_dashboard/mappingModel=platform\:/resource/specagent/model/MultiRobotSystem.gmfmap
+gmf_dashboard/toolingDefinitionModel=platform\:/resource/specagent/model/MultiRobotSystem.gmftool

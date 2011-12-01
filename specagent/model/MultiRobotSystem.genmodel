@@ -21,34 +21,27 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MultiRobotSystem.ecore#//Agent/behaviours"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MultiRobotSystem.ecore#//Agent/memory"/>
     </genClasses>
-    <genClasses ecoreClass="MultiRobotSystem.ecore#//Effector">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//Effector/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//Effector/description"/>
-    </genClasses>
+    <genClasses ecoreClass="MultiRobotSystem.ecore#//Effector"/>
     <genClasses ecoreClass="MultiRobotSystem.ecore#//Sensor">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//Sensor/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//Sensor/description"/>
     </genClasses>
     <genClasses ecoreClass="MultiRobotSystem.ecore#//Transmitter">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MultiRobotSystem.ecore#//Transmitter/remote"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//Transmitter/name"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//Transmitter/description"/>
     </genClasses>
     <genClasses ecoreClass="MultiRobotSystem.ecore#//TransitionFunction">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//TransitionFunction/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//TransitionFunction/description"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MultiRobotSystem.ecore#//TransitionFunction/stimuli"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference MultiRobotSystem.ecore#//TransitionFunction/responses"/>
     </genClasses>
     <genClasses ecoreClass="MultiRobotSystem.ecore#//Behaviour">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MultiRobotSystem.ecore#//Behaviour/behaviour"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MultiRobotSystem.ecore#//Behaviour/functions"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MultiRobotSystem.ecore#//Behaviour/initial"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MultiRobotSystem.ecore#//Behaviour/terminal"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//Behaviour/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//Behaviour/description"/>
     </genClasses>
     <genClasses ecoreClass="MultiRobotSystem.ecore#//Condition">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//Condition/name"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//Condition/description"/>
     </genClasses>
     <genClasses ecoreClass="MultiRobotSystem.ecore#//InputBuffer">
@@ -62,9 +55,11 @@
     <genClasses image="false" ecoreClass="MultiRobotSystem.ecore#//IOElement">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MultiRobotSystem.ecore#//IOElement/inputs"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference MultiRobotSystem.ecore#//IOElement/outputs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//IOElement/description"/>
     </genClasses>
     <genClasses image="false" ecoreClass="MultiRobotSystem.ecore#//OpaqueData">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//OpaqueData/Type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//OpaqueData/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//OpaqueData/package"/>
     </genClasses>
     <genClasses ecoreClass="MultiRobotSystem.ecore#//InternalData">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute MultiRobotSystem.ecore#//InternalData/name"/>
