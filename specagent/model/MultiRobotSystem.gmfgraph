@@ -14,9 +14,15 @@
     <descriptors
         name="AgentFigure">
       <actualFigure
-          xsi:type="gmfgraph:RoundedRectangle">
+          xsi:type="gmfgraph:RoundedRectangle"
+          lineKind="LINE_DASH"
+          cornerWidth="12"
+          cornerHeight="12">
         <layout
-            xsi:type="gmfgraph:FlowLayout"/>
+            xsi:type="gmfgraph:XYLayout"/>
+        <backgroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="lightGray"/>
         <children
             xsi:type="gmfgraph:Label"
             name="AgentNameFigure"
@@ -29,7 +35,13 @@
         name="EffectorFigure">
       <actualFigure
           xsi:type="gmfgraph:Rectangle"
-          name="EffectorFigure"/>
+          name="EffectorFigure">
+        <children
+            xsi:type="gmfgraph:Label"
+            name="EffectorLabelFigure"/>
+      </actualFigure>
+      <accessors
+          figure="//@figures.0/@descriptors.1/@actualFigure/@children.0"/>
     </descriptors>
     <descriptors
         name="SensorFigure">
@@ -108,8 +120,9 @@
     <descriptors
         name="InputBufferFigure">
       <actualFigure
-          xsi:type="gmfgraph:Rectangle"
-          name="InputBufferFigure">
+          xsi:type="gmfgraph:CustomFigure"
+          name="InputBufferFigure"
+          qualifiedClassName="multirobotsystem.diagram.edit.parts.custom.DoubleBorderRoundedRectangle">
         <layout
             xsi:type="gmfgraph:FlowLayout"/>
         <children
@@ -123,8 +136,9 @@
     <descriptors
         name="OutputBufferFigure">
       <actualFigure
-          xsi:type="gmfgraph:Rectangle"
-          name="OutputBufferFigure">
+          xsi:type="gmfgraph:CustomFigure"
+          name="OutputBufferFigure"
+          qualifiedClassName="multirobotsystem.diagram.edit.parts.custom.DoubleBorderRoundedRectangle">
         <layout
             xsi:type="gmfgraph:FlowLayout"/>
         <children
@@ -171,10 +185,12 @@
       figure="BehaviourFigure"/>
   <nodes
       name="InputBuffer"
-      figure="InputBufferFigure"/>
+      figure="InputBufferFigure"
+      affixedParentSide="NSEW"/>
   <nodes
       name="OutputBuffer"
-      figure="OutputBufferFigure"/>
+      figure="OutputBufferFigure"
+      affixedParentSide="NSEW"/>
   <nodes
       name="InternalData"
       figure="InternalDataFigure"/>
@@ -184,6 +200,18 @@
   <connections
       name="TransitionFunctionStimuli"
       figure="TransitionFunctionStimuliFigure"/>
+  <compartments
+      name="AgentCompartment"
+      figure="AgentFigure"/>
+  <compartments
+      name="SensorCompartment"
+      figure="SensorFigure"/>
+  <compartments
+      name="EffectorCompartment"
+      figure="EffectorFigure"/>
+  <compartments
+      name="TransmitterCompartment"
+      figure="TransmitterFigure"/>
   <labels
       name="AgentName"
       figure="AgentFigure"
@@ -216,4 +244,8 @@
       name="InternalDataName"
       figure="InternalDataFigure"
       accessor="//@figures.0/@descriptors.10/@accessors.0"/>
+  <labels
+      name="EffectorLabel"
+      figure="EffectorFigure"
+      accessor="//@figures.0/@descriptors.1/@accessors.0"/>
 </gmfgraph:Canvas>
