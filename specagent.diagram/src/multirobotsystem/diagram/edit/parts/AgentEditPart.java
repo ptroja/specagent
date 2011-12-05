@@ -5,6 +5,7 @@ import multirobotsystem.diagram.edit.policies.AgentItemSemanticEditPolicy;
 import multirobotsystem.diagram.part.MultiRobotSystemVisualIDRegistry;
 
 import org.eclipse.draw2d.ColorConstants;
+import org.eclipse.draw2d.FreeformLayout;
 import org.eclipse.draw2d.Graphics;
 import org.eclipse.draw2d.IFigure;
 import org.eclipse.draw2d.RoundedRectangle;
@@ -197,11 +198,11 @@ public class AgentEditPart extends ShapeNodeEditPart {
 				if (result == null) {
 					result = new Rectangle(0, 0, -1, -1);
 				}
-				if(result.x < 0) {
-					result.x = 0;						
+				if (result.x < 0) {
+					result.x = 0;
 				}
-				if(result.y < 0) {
-					result.y = 0;						
+				if (result.y < 0) {
+					result.y = 0;
 				}
 				return result;
 			}

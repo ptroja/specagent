@@ -14,7 +14,7 @@
    id="svg2993"
    version="1.1"
    inkscape:version="0.48.2 r9819"
-   inkscape:export-filename="/home/ptroja/Agent.png"
+   inkscape:export-filename="/home/ptroja/TransitionFunction.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90"
    sodipodi:docname="TransitionFunction.svg">
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>

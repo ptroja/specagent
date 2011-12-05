@@ -49,7 +49,9 @@
           title="TransmitterRemote"
           description="Create new TransmitterRemote">
         <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/TransmitterRemote.gif"
+            bundle="specagent.edit"/>
         <largeIcon
             xsi:type="gmftool:DefaultImage"/>
       </tools>
@@ -75,10 +77,12 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="TransitionFunctionStimuli"
+          title="Stimuli"
           description="Create new TransitionFunctionStimuli">
         <smallIcon
-            xsi:type="gmftool:DefaultImage"/>
+            xsi:type="gmftool:BundleImage"
+            path="icons/full/obj16/TransitionFunctionStimuli.gif"
+            bundle="specagent.edit"/>
         <largeIcon
             xsi:type="gmftool:DefaultImage"/>
       </tools>

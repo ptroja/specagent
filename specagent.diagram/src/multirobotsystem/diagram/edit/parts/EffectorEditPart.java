@@ -135,28 +135,29 @@ public class EffectorEditPart extends AbstractBorderedShapeEditPart {
 		}
 		if (childEditPart instanceof InputBufferEditPart) {
 			BorderItemLocator locator = new BorderItemLocator(getMainFigure());
-			
-			IFigure childFigure = ((InputBufferEditPart) childEditPart).getFigure();
+
+			IFigure childFigure = ((InputBufferEditPart) childEditPart)
+					.getFigure();
 			Rectangle childBounds = childFigure.getBounds();
 
 			locator.setBorderItemOffset(new Dimension(childBounds.width / 2,
 					childBounds.height / 2));
-			
-			getBorderedFigure().getBorderItemContainer()
-					.add(((InputBufferEditPart) childEditPart).getFigure(),
-							locator);
+
+			getBorderedFigure().getBorderItemContainer().add(
+					((InputBufferEditPart) childEditPart).getFigure(), locator);
 
 			return true;
 		}
-		if (childEditPart instanceof OutputBufferEditPart) {	
+		if (childEditPart instanceof OutputBufferEditPart) {
 			BorderItemLocator locator = new BorderItemLocator(getMainFigure());
-			
-			IFigure childFigure = ((OutputBufferEditPart) childEditPart).getFigure();
+
+			IFigure childFigure = ((OutputBufferEditPart) childEditPart)
+					.getFigure();
 			Rectangle childBounds = childFigure.getBounds();
 
 			locator.setBorderItemOffset(new Dimension(childBounds.width / 2,
 					childBounds.height / 2));
-			
+
 			getBorderedFigure().getBorderItemContainer()
 					.add(((OutputBufferEditPart) childEditPart).getFigure(),
 							locator);

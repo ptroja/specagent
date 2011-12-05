@@ -14,7 +14,7 @@
    id="svg2993"
    version="1.1"
    inkscape:version="0.48.2 r9819"
-   inkscape:export-filename="/home/ptroja/Agent.png"
+   inkscape:export-filename="/home/ptroja/Effector.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90"
    sodipodi:docname="Effector.svg">
@@ -28,7 +28,7 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="22.197802"
-     inkscape:cx="12.481579"
+     inkscape:cx="6.9855393"
      inkscape:cy="7.9532358"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -47,7 +47,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -58,17 +58,16 @@
     <text
        xml:space="preserve"
        style="font-size:23.0314827px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:start;line-height:125%;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;font-family:cmmi10;-inkscape-font-specification:cmmi10"
-       x="1.3144531"
-       y="12.270048"
+       x="3.7329102"
+       y="11.875977"
        id="text3001"
        sodipodi:linespacing="125%"><tspan
          sodipodi:role="line"
          id="tspan3003"
-         x="1.3144531"
-         y="12.270048"
+         x="3.7329102"
+         y="11.875977"
          style="font-size:18px">e<tspan
    style="font-size:65.00091553%;baseline-shift:sub"
-   id="tspan3049"
-   dx="-1.5">•</tspan></tspan></text>
+   id="tspan3049" /></tspan></text>
   </g>
 </svg>

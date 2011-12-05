@@ -7,7 +7,8 @@
       name="Default">
     <figures
         xsi:type="gmfgraph:PolylineDecoration"
-        name="TransmitterRemoteTargetDecoration"/>
+        name="TransmitterRemoteTargetDecoration"
+        lineKind="LINE_DASH"/>
     <figures
         xsi:type="gmfgraph:PolylineDecoration"
         name="TransitionFunctionStimuliTargetDecoration"/>
@@ -100,7 +101,11 @@
       <actualFigure
           xsi:type="gmfgraph:PolylineConnection"
           name="TransitionFunctionStimuliFigure"
-          targetDecoration="//@figures.0/@figures.1"/>
+          targetDecoration="//@figures.0/@figures.1">
+        <foregroundColor
+            xsi:type="gmfgraph:ConstantColor"
+            value="darkGray"/>
+      </actualFigure>
     </descriptors>
     <descriptors
         name="BehaviourFigure">

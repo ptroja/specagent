@@ -60,7 +60,7 @@
             getterName="getFigureEffectorLabelFigure"
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
-            parser="//@labelParsers/@implementations.0"/>
+            parser="//@labelParsers/@implementations.1"/>
       </labels>
     </childNodes>
     <childNodes
@@ -91,6 +91,25 @@
         <childMetaFeature
             href="MultiRobotSystem.genmodel#//multirobotsystem/IOElement/inputs"/>
       </modelFacet>
+      <labels
+          visualID="5005"
+          editPartClassName="WrappingLabelEditPart"
+          itemSemanticEditPolicyClassName="WrappingLabelItemSemanticEditPolicy"
+          notationViewFactoryClassName="InputBufferLabelViewFactory"
+          elementIcon="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureInputBufferNameFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="MultiRobotSystem.genmodel#//multirobotsystem/InputBuffer/name"/>
+        </modelFacet>
+      </labels>
     </childNodes>
     <childNodes
         xsi:type="gmfgen:GenChildSideAffixedNode"
@@ -120,6 +139,25 @@
         <childMetaFeature
             href="MultiRobotSystem.genmodel#//multirobotsystem/IOElement/outputs"/>
       </modelFacet>
+      <labels
+          visualID="5006"
+          editPartClassName="WrappingLabel2EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel2ItemSemanticEditPolicy"
+          notationViewFactoryClassName="OutputBufferLabelViewFactory"
+          elementIcon="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureOutputBufferNameFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="MultiRobotSystem.genmodel#//multirobotsystem/OutputBuffer/name"/>
+        </modelFacet>
+      </labels>
     </childNodes>
     <childNodes
         visualID="3004"
@@ -149,6 +187,25 @@
         <childMetaFeature
             href="MultiRobotSystem.genmodel#//multirobotsystem/Agent/sensors"/>
       </modelFacet>
+      <labels
+          visualID="5003"
+          editPartClassName="SensorNameEditPart"
+          itemSemanticEditPolicyClassName="SensorNameItemSemanticEditPolicy"
+          notationViewFactoryClassName="SensorNameViewFactory"
+          elementIcon="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureSensorNameFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="MultiRobotSystem.genmodel#//multirobotsystem/Sensor/name"/>
+        </modelFacet>
+      </labels>
     </childNodes>
     <childNodes
         xsi:type="gmfgen:GenChildSideAffixedNode"
@@ -178,6 +235,25 @@
         <childMetaFeature
             href="MultiRobotSystem.genmodel#//multirobotsystem/IOElement/inputs"/>
       </modelFacet>
+      <labels
+          visualID="5007"
+          editPartClassName="WrappingLabel3EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel3ItemSemanticEditPolicy"
+          notationViewFactoryClassName="InputBufferLabelViewFactory"
+          elementIcon="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureInputBufferNameFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="MultiRobotSystem.genmodel#//multirobotsystem/InputBuffer/name"/>
+        </modelFacet>
+      </labels>
     </childNodes>
     <childNodes
         xsi:type="gmfgen:GenChildSideAffixedNode"
@@ -207,6 +283,25 @@
         <childMetaFeature
             href="MultiRobotSystem.genmodel#//multirobotsystem/IOElement/outputs"/>
       </modelFacet>
+      <labels
+          visualID="5008"
+          editPartClassName="WrappingLabel4EditPart"
+          itemSemanticEditPolicyClassName="WrappingLabel4ItemSemanticEditPolicy"
+          notationViewFactoryClassName="OutputBufferLabelViewFactory"
+          elementIcon="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureOutputBufferNameFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="MultiRobotSystem.genmodel#//multirobotsystem/OutputBuffer/name"/>
+        </modelFacet>
+      </labels>
     </childNodes>
     <childNodes
         visualID="3007"
@@ -236,6 +331,25 @@
         <childMetaFeature
             href="MultiRobotSystem.genmodel#//multirobotsystem/Agent/transmitters"/>
       </modelFacet>
+      <labels
+          visualID="5004"
+          editPartClassName="TransmitterNameEditPart"
+          itemSemanticEditPolicyClassName="TransmitterNameItemSemanticEditPolicy"
+          notationViewFactoryClassName="TransmitterNameViewFactory"
+          elementIcon="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureTransmitterNameFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="MultiRobotSystem.genmodel#//multirobotsystem/Transmitter/name"/>
+        </modelFacet>
+      </labels>
     </childNodes>
     <childNodes
         xsi:type="gmfgen:GenChildSideAffixedNode"
@@ -323,13 +437,118 @@
             href="MultiRobotSystem.genmodel#//multirobotsystem/Agent/memory"/>
       </modelFacet>
     </childNodes>
+    <childNodes
+        visualID="3011"
+        editPartClassName="BehaviourEditPart"
+        itemSemanticEditPolicyClassName="BehaviourItemSemanticEditPolicy"
+        notationViewFactoryClassName="BehaviourViewFactory"
+        canonicalEditPolicyClassName="BehaviourCanonicalEditPolicy"
+        childNodes="//@diagram/@childNodes.11"
+        graphicalNodeEditPolicyClassName="BehaviourGraphicalNodeEditPolicy"
+        createCommandClassName="BehaviourCreateCommand"
+        containers="//@diagram/@topLevelNodes.0">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="BehaviourEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          layoutType="FLOW_LAYOUT"
+          className="BehaviourFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class BehaviourFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureBehaviourNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public BehaviourFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.FlowLayout layoutThis = new org.eclipse.draw2d.FlowLayout();&#xA;&#x9;layoutThis.setStretchMinorAxis(false);&#xA;&#x9;layoutThis.setMinorAlignment(org.eclipse.draw2d.FlowLayout.ALIGN_LEFTTOP&#xA;);&#xA;&#xA;&#x9;layoutThis.setMajorAlignment(org.eclipse.draw2d.FlowLayout.ALIGN_LEFTTOP&#xA;);&#xA;&#x9;layoutThis.setMajorSpacing(5);&#xA;&#x9;layoutThis.setMinorSpacing(5);&#xA;&#x9;layoutThis.setHorizontal(true);&#xA;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureBehaviourNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureBehaviourNameFigure.setText(&quot;&lt;...>&quot;);&#xA;&#xA;this.add(fFigureBehaviourNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureBehaviourNameFigure() {&#xA;&#x9;&#x9;return fFigureBehaviourNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <modelFacet>
+        <metaClass
+            href="MultiRobotSystem.genmodel#//multirobotsystem/Behaviour"/>
+        <containmentMetaFeature
+            href="MultiRobotSystem.genmodel#//multirobotsystem/Agent/behaviours"/>
+        <childMetaFeature
+            href="MultiRobotSystem.genmodel#//multirobotsystem/Agent/behaviours"/>
+        <modelElementInitializer
+            xsi:type="gmfgen:GenFeatureSeqInitializer">
+          <initializers
+              xsi:type="gmfgen:GenReferenceNewElementSpec">
+            <feature
+                href="MultiRobotSystem.genmodel#//multirobotsystem/Behaviour/initial"/>
+            <newElementInitializers>
+              <initializers
+                  xsi:type="gmfgen:GenFeatureValueSpec"
+                  value="//@expressionProviders/@providers.0/@expressions.0">
+                <feature
+                    href="MultiRobotSystem.genmodel#//multirobotsystem/Condition/description"/>
+              </initializers>
+            </newElementInitializers>
+          </initializers>
+          <initializers
+              xsi:type="gmfgen:GenReferenceNewElementSpec">
+            <feature
+                href="MultiRobotSystem.genmodel#//multirobotsystem/Behaviour/terminal"/>
+            <newElementInitializers>
+              <initializers
+                  xsi:type="gmfgen:GenFeatureValueSpec"
+                  value="//@expressionProviders/@providers.0/@expressions.1">
+                <feature
+                    href="MultiRobotSystem.genmodel#//multirobotsystem/Condition/description"/>
+              </initializers>
+            </newElementInitializers>
+          </initializers>
+        </modelElementInitializer>
+      </modelFacet>
+      <labels
+          visualID="5009"
+          editPartClassName="BehaviourNameEditPart"
+          itemSemanticEditPolicyClassName="BehaviourNameItemSemanticEditPolicy"
+          notationViewFactoryClassName="BehaviourNameViewFactory"
+          elementIcon="true">
+        <diagramRunTimeClass
+            href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+        <viewmap
+            xsi:type="gmfgen:ParentAssignedViewmap"
+            getterName="getFigureBehaviourNameFigure"
+            figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
+        <modelFacet
+            xsi:type="gmfgen:FeatureLabelModelFacet"
+            parser="//@labelParsers/@implementations.0">
+          <metaFeatures
+              href="MultiRobotSystem.genmodel#//multirobotsystem/Behaviour/name"/>
+        </modelFacet>
+      </labels>
+    </childNodes>
+    <childNodes
+        visualID="3012"
+        editPartClassName="TransitionFunctionEditPart"
+        itemSemanticEditPolicyClassName="TransitionFunctionItemSemanticEditPolicy"
+        notationViewFactoryClassName="TransitionFunctionViewFactory"
+        canonicalEditPolicyClassName="TransitionFunctionCanonicalEditPolicy"
+        graphicalNodeEditPolicyClassName="TransitionFunctionGraphicalNodeEditPolicy"
+        createCommandClassName="TransitionFunctionCreateCommand"
+        containers="//@diagram/@childNodes.10">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Node"/>
+      <elementType
+          xsi:type="gmfgen:MetamodelType"
+          editHelperClassName="TransitionFunctionEditHelper"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          layoutType="FLOW_LAYOUT"
+          className="TransitionFunctionFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class TransitionFunctionFigure extends org.eclipse.draw2d.RectangleFigure {&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel fFigureTransitionFunctionNameFigure; &#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public TransitionFunctionFigure() {&#xA;&#x9;&#x9;&#xA;&#x9;org.eclipse.draw2d.FlowLayout layoutThis = new org.eclipse.draw2d.FlowLayout();&#xA;&#x9;layoutThis.setStretchMinorAxis(false);&#xA;&#x9;layoutThis.setMinorAlignment(org.eclipse.draw2d.FlowLayout.ALIGN_LEFTTOP&#xA;);&#xA;&#xA;&#x9;layoutThis.setMajorAlignment(org.eclipse.draw2d.FlowLayout.ALIGN_LEFTTOP&#xA;);&#xA;&#x9;layoutThis.setMajorSpacing(5);&#xA;&#x9;layoutThis.setMinorSpacing(5);&#xA;&#x9;layoutThis.setHorizontal(true);&#xA;&#xA;&#x9;this.setLayoutManager(layoutThis);&#xA;&#xA;&#x9;&#x9;&#x9;&#x9;createContents();&#xA;&#x9;}&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private void createContents(){&#xA;&#xA;&#xA;fFigureTransitionFunctionNameFigure = new org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel();&#xA;fFigureTransitionFunctionNameFigure.setText(&quot;&lt;...>&quot;);&#xA;&#xA;this.add(fFigureTransitionFunctionNameFigure);&#xA;&#xA;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel getFigureTransitionFunctionNameFigure() {&#xA;&#x9;&#x9;return fFigureTransitionFunctionNameFigure;&#xA;&#x9;}&#xA;&#xA;&#xA;}&#xA;&#xA;"/>
+      <modelFacet>
+        <metaClass
+            href="MultiRobotSystem.genmodel#//multirobotsystem/TransitionFunction"/>
+        <containmentMetaFeature
+            href="MultiRobotSystem.genmodel#//multirobotsystem/Behaviour/functions"/>
+        <childMetaFeature
+            href="MultiRobotSystem.genmodel#//multirobotsystem/Behaviour/functions"/>
+      </modelFacet>
+    </childNodes>
     <topLevelNodes
         visualID="2001"
         editPartClassName="AgentEditPart"
         itemSemanticEditPolicyClassName="AgentItemSemanticEditPolicy"
         notationViewFactoryClassName="AgentViewFactory"
         canonicalEditPolicyClassName="AgentCanonicalEditPolicy"
-        childNodes="//@diagram/@childNodes.0 //@diagram/@childNodes.3 //@diagram/@childNodes.6 //@diagram/@childNodes.9"
+        childNodes="//@diagram/@childNodes.0 //@diagram/@childNodes.3 //@diagram/@childNodes.6 //@diagram/@childNodes.9 //@diagram/@childNodes.10"
         graphicalNodeEditPolicyClassName="AgentGraphicalNodeEditPolicy"
         createCommandClassName="AgentCreateCommand">
       <diagramRunTimeClass
@@ -368,13 +587,38 @@
             figureQualifiedClassName="org.eclipse.gmf.runtime.draw2d.ui.figures.WrappingLabel"/>
         <modelFacet
             xsi:type="gmfgen:FeatureLabelModelFacet"
-            parser="//@labelParsers/@implementations.1"
+            parser="//@labelParsers/@implementations.0"
             viewPattern="">
           <metaFeatures
               href="MultiRobotSystem.genmodel#//multirobotsystem/Agent/name"/>
         </modelFacet>
       </labels>
     </topLevelNodes>
+    <links
+        visualID="4002"
+        editPartClassName="TransitionFunctionStimuliEditPart"
+        itemSemanticEditPolicyClassName="TransitionFunctionStimuliItemSemanticEditPolicy"
+        notationViewFactoryClassName="TransitionFunctionStimuliViewFactory"
+        createCommandClassName="TransitionFunctionStimuliCreateCommand"
+        reorientCommandClassName="TransitionFunctionStimuliReorientCommand">
+      <diagramRunTimeClass
+          href="../../../plugin/org.eclipse.gmf.runtime.notation/model/notation.genmodel#//notation/Edge"/>
+      <elementType
+          xsi:type="gmfgen:SpecializationType"/>
+      <viewmap
+          xsi:type="gmfgen:InnerClassViewmap"
+          className="TransitionFunctionStimuliFigure"
+          classBody="&#xA;/**&#xA; * @generated&#xA; */&#xA;public class TransitionFunctionStimuliFigure extends org.eclipse.gmf.runtime.draw2d.ui.figures.PolylineConnectionEx {&#xA;&#xA;&#xA;&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;public TransitionFunctionStimuliFigure() {&#xA;&#x9;&#x9;&#x9;this.setForegroundColor(org.eclipse.draw2d.ColorConstants.darkGray);&#xA;&#xA;&#x9;&#x9;setTargetDecoration(createTargetDecoration());&#xA;&#x9;}&#xA;&#xA;&#x9;/**&#xA;&#x9; * @generated&#xA;&#x9; */&#xA;&#x9;private org.eclipse.draw2d.RotatableDecoration createTargetDecoration() {&#xA;&#x9;&#x9;org.eclipse.draw2d.PolylineDecoration df = new org.eclipse.draw2d.PolylineDecoration();&#xA;&#x9;&#x9;return df;&#xA;&#x9;}&#xA;&#xA;&#xA;&#xA;&#xA;}&#xA;&#xA;">
+        <attributes
+            xsi:type="gmfgen:StyleAttributes"
+            fixedForeground="true"/>
+      </viewmap>
+      <modelFacet
+          xsi:type="gmfgen:FeatureLinkModelFacet">
+        <metaFeature
+            href="MultiRobotSystem.genmodel#//multirobotsystem/TransitionFunction/stimuli"/>
+      </modelFacet>
+    </links>
     <palette>
       <groups
           title="multirobotsystem">
@@ -401,21 +645,26 @@
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="TransmitterRemote"
-            description="Create new TransmitterRemote"/>
+            description="Create new TransmitterRemote"
+            smallIconPath="/specagent.edit/icons/full/obj16/TransmitterRemote.gif"/>
         <entries
             xsi:type="gmfgen:Separator"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="Behaviour"
-            description="Create new Behaviour"/>
+            description="Create new Behaviour"
+            genNodes="//@diagram/@childNodes.10"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
             title="TransitionFunction"
-            description="Create new TransitionFunction"/>
+            description="Create new TransitionFunction"
+            genNodes="//@diagram/@childNodes.11"/>
         <entries
             xsi:type="gmfgen:ToolEntry"
-            title="TransitionFunctionStimuli"
-            description="Create new TransitionFunctionStimuli"/>
+            title="Stimuli"
+            description="Create new TransitionFunctionStimuli"
+            smallIconPath="/specagent.edit/icons/full/obj16/TransitionFunctionStimuli.gif"
+            genLinks="//@diagram/@links.0"/>
         <entries
             xsi:type="gmfgen:Separator"/>
         <entries
@@ -463,6 +712,7 @@
   </diagram>
   <plugin>
     <requiredPlugins>org.eclipse.draw2d</requiredPlugins>
+    <requiredPlugins>org.eclipse.gmf.runtime.draw2d.ui</requiredPlugins>
   </plugin>
   <editor/>
   <navigator>
@@ -499,8 +749,67 @@
         parent="//@diagram/@topLevelNodes.0"
         child="//@diagram/@childNodes.9"/>
     <childReferences
+        parent="//@diagram/@childNodes.10"
+        child="//@diagram/@childNodes.11"/>
+    <childReferences
+        parent="//@diagram/@topLevelNodes.0"
+        child="//@diagram/@childNodes.10"/>
+    <childReferences
         parent="//@diagram"
         child="//@diagram/@topLevelNodes.0"/>
+    <childReferences
+        parent="//@diagram"
+        child="//@diagram/@links.0"
+        groupName="links"
+        groupIcon="icons/linksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.0"
+        child="//@diagram/@childNodes.1"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.1"
+        child="//@diagram/@links.0"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.0"
+        child="//@diagram/@childNodes.4"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.4"
+        child="//@diagram/@links.0"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.0"
+        child="//@diagram/@childNodes.7"
+        referenceType="out_target"
+        groupName="target"
+        groupIcon="icons/linkTargetNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.7"
+        child="//@diagram/@links.0"
+        referenceType="in_source"
+        groupName="incoming links"
+        groupIcon="icons/incomingLinksNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@links.0"
+        child="//@diagram/@childNodes.11"
+        referenceType="in_source"
+        groupName="source"
+        groupIcon="icons/linkSourceNavigatorGroup.gif"/>
+    <childReferences
+        parent="//@diagram/@childNodes.11"
+        child="//@diagram/@links.0"
+        referenceType="out_target"
+        groupName="outgoing links"
+        groupIcon="icons/outgoingLinksNavigatorGroup.gif"/>
   </navigator>
   <diagramUpdater/>
   <propertySheet>
@@ -524,14 +833,23 @@
   </propertySheet>
   <domainGenModel
       href="MultiRobotSystem.genmodel#/"/>
+  <expressionProviders>
+    <providers
+        xsi:type="gmfgen:GenLiteralExpressionProvider">
+      <expressions
+          body="&quot;TODO&quot;"/>
+      <expressions
+          body="&quot;TODO&quot;"/>
+    </providers>
+  </expressionProviders>
   <labelParsers
       extensibleViaService="true">
     <implementations
+        xsi:type="gmfgen:PredefinedParser"
+        uses="//@diagram/@childNodes.1/@labels.0/@modelFacet //@diagram/@childNodes.2/@labels.0/@modelFacet //@diagram/@childNodes.4/@labels.0/@modelFacet //@diagram/@childNodes.5/@labels.0/@modelFacet //@diagram/@childNodes.3/@labels.0/@modelFacet //@diagram/@childNodes.6/@labels.0/@modelFacet //@diagram/@childNodes.10/@labels.0/@modelFacet //@diagram/@topLevelNodes.0/@labels.0/@modelFacet"/>
+    <implementations
         xsi:type="gmfgen:ExternalParser"
         uses="//@diagram/@childNodes.0/@labels.0/@modelFacet"/>
-    <implementations
-        xsi:type="gmfgen:PredefinedParser"
-        uses="//@diagram/@topLevelNodes.0/@labels.0/@modelFacet"/>
   </labelParsers>
   <contextMenus
       context="//@diagram">

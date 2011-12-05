@@ -136,31 +136,33 @@ public class SensorEditPart extends AbstractBorderedShapeEditPart {
 		}
 		if (childEditPart instanceof InputBuffer2EditPart) {
 			BorderItemLocator locator = new BorderItemLocator(getMainFigure());
-			
-			IFigure childFigure = ((InputBuffer2EditPart) childEditPart).getFigure();
+
+			IFigure childFigure = ((InputBuffer2EditPart) childEditPart)
+					.getFigure();
 			Rectangle childBounds = childFigure.getBounds();
 
 			locator.setBorderItemOffset(new Dimension(childBounds.width / 2,
 					childBounds.height / 2));
-			
+
 			getBorderedFigure().getBorderItemContainer()
 					.add(((InputBuffer2EditPart) childEditPart).getFigure(),
 							locator);
 			return true;
 		}
-		if (childEditPart instanceof OutputBuffer2EditPart) {	
+		if (childEditPart instanceof OutputBuffer2EditPart) {
 			BorderItemLocator locator = new BorderItemLocator(getMainFigure());
-			
-			IFigure childFigure = ((OutputBuffer2EditPart) childEditPart).getFigure();
+
+			IFigure childFigure = ((OutputBuffer2EditPart) childEditPart)
+					.getFigure();
 			Rectangle childBounds = childFigure.getBounds();
 
 			locator.setBorderItemOffset(new Dimension(childBounds.width / 2,
 					childBounds.height / 2));
-			
-			getBorderedFigure().getBorderItemContainer()
-					.add(((OutputBuffer2EditPart) childEditPart).getFigure(),
-							locator);
-			
+
+			getBorderedFigure().getBorderItemContainer().add(
+					((OutputBuffer2EditPart) childEditPart).getFigure(),
+					locator);
+
 			return true;
 		}
 		return false;
