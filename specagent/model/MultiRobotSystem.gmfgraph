@@ -27,7 +27,12 @@
         <children
             xsi:type="gmfgraph:Label"
             name="AgentNameFigure"
-            text="&lt;...>"/>
+            text="&lt;...>">
+          <layoutData
+              xsi:type="gmfgraph:BorderLayoutData"
+              alignment="BEGINNING"
+              vertical="true"/>
+        </children>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.0/@actualFigure/@children.0"/>
@@ -113,14 +118,28 @@
           xsi:type="gmfgraph:Rectangle"
           name="BehaviourFigure">
         <layout
-            xsi:type="gmfgraph:FlowLayout"/>
+            xsi:type="gmfgraph:BorderLayout"/>
         <children
             xsi:type="gmfgraph:Label"
             name="BehaviourNameFigure"
-            text="&lt;...>"/>
+            text="&lt;...>">
+          <layoutData
+              xsi:type="gmfgraph:BorderLayoutData"
+              alignment="BEGINNING"
+              vertical="true"/>
+        </children>
+        <children
+            xsi:type="gmfgraph:Rectangle"
+            name="BehaviourCompartmentFigure">
+          <layoutData
+              xsi:type="gmfgraph:BorderLayoutData"
+              vertical="true"/>
+        </children>
       </actualFigure>
       <accessors
           figure="//@figures.0/@descriptors.7/@actualFigure/@children.0"/>
+      <accessors
+          figure="//@figures.0/@descriptors.7/@actualFigure/@children.1"/>
     </descriptors>
     <descriptors
         name="InputBufferFigure">
@@ -157,10 +176,9 @@
     <descriptors
         name="InternalDataFigure">
       <actualFigure
-          xsi:type="gmfgraph:Rectangle"
-          name="InternalDataFigure">
-        <layout
-            xsi:type="gmfgraph:FlowLayout"/>
+          xsi:type="gmfgraph:CustomFigure"
+          name="InternalDataFigure"
+          qualifiedClassName="multirobotsystem.diagram.edit.parts.custom.DoubleBorderRoundedRectangle">
         <children
             xsi:type="gmfgraph:Label"
             name="InternalDataNameFigure"
@@ -206,17 +224,10 @@
       name="TransitionFunctionStimuli"
       figure="TransitionFunctionStimuliFigure"/>
   <compartments
-      name="AgentCompartment"
-      figure="AgentFigure"/>
-  <compartments
-      name="SensorCompartment"
-      figure="SensorFigure"/>
-  <compartments
-      name="EffectorCompartment"
-      figure="EffectorFigure"/>
-  <compartments
-      name="TransmitterCompartment"
-      figure="TransmitterFigure"/>
+      name="BehaviourCompartment"
+      figure="BehaviourFigure"
+      collapsible="true"
+      accessor="//@figures.0/@descriptors.7/@accessors.1"/>
   <labels
       name="AgentName"
       figure="AgentFigure"

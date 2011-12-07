@@ -46,8 +46,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="TransmitterRemote"
-          description="Create new TransmitterRemote">
+          title="Transmitter link"
+          description="Create new Transmitter link">
         <smallIcon
             xsi:type="gmftool:BundleImage"
             path="icons/full/obj16/TransmitterRemote.gif"
@@ -68,8 +68,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="TransitionFunction"
-          description="Create new TransitionFunction">
+          title="Transition function"
+          description="Create new Transition function">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -90,8 +90,8 @@
           xsi:type="gmftool:PaletteSeparator"/>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="InputBuffer"
-          description="Create new InputBuffer">
+          title="Input buffer"
+          description="Create new Input buffer">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -99,8 +99,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="OutputBuffer"
-          description="Create new OutputBuffer">
+          title="Output buffer"
+          description="Create new Output buffer">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon
@@ -108,8 +108,8 @@
       </tools>
       <tools
           xsi:type="gmftool:CreationTool"
-          title="InternalData"
-          description="Create new InternalData">
+          title="Internal data"
+          description="Create new Internal data">
         <smallIcon
             xsi:type="gmftool:DefaultImage"/>
         <largeIcon

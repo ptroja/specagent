@@ -165,6 +165,13 @@
             <ownedChild>
               <domainMetaElement
                   href="MultiRobotSystem.ecore#//InputBuffer"/>
+              <labelMappings
+                  xsi:type="gmfmap:FeatureLabelMapping">
+                <diagramLabel
+                    href="MultiRobotSystem.gmfgraph#InputBufferName"/>
+                <features
+                    href="MultiRobotSystem.ecore#//InputBuffer/name"/>
+              </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
                   href="MultiRobotSystem.gmftool#//@palette/@tools.0/@tools.10"/>
@@ -178,6 +185,13 @@
             <ownedChild>
               <domainMetaElement
                   href="MultiRobotSystem.ecore#//OutputBuffer"/>
+              <labelMappings
+                  xsi:type="gmfmap:FeatureLabelMapping">
+                <diagramLabel
+                    href="MultiRobotSystem.gmfgraph#OutputBufferName"/>
+                <features
+                    href="MultiRobotSystem.ecore#//OutputBuffer/name"/>
+              </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
                   href="MultiRobotSystem.gmftool#//@palette/@tools.0/@tools.11"/>
@@ -195,6 +209,13 @@
         <ownedChild>
           <domainMetaElement
               href="MultiRobotSystem.ecore#//InternalData"/>
+          <labelMappings
+              xsi:type="gmfmap:FeatureLabelMapping">
+            <diagramLabel
+                href="MultiRobotSystem.gmfgraph#InternalDataName"/>
+            <features
+                href="MultiRobotSystem.ecore#//InternalData/name"/>
+          </labelMappings>
           <tool
               xsi:type="gmftool:CreationTool"
               href="MultiRobotSystem.gmftool#//@palette/@tools.0/@tools.12"/>
@@ -259,7 +280,8 @@
               href="MultiRobotSystem.gmftool#//@palette/@tools.0/@tools.6"/>
           <diagramNode
               href="MultiRobotSystem.gmfgraph#Behaviour"/>
-          <children>
+          <children
+              compartment="//@nodes.0/@ownedChild/@children.4/@ownedChild/@compartments.0">
             <containmentFeature
                 href="MultiRobotSystem.ecore#//Behaviour/functions"/>
             <childrenFeature
@@ -267,6 +289,13 @@
             <ownedChild>
               <domainMetaElement
                   href="MultiRobotSystem.ecore#//TransitionFunction"/>
+              <labelMappings
+                  xsi:type="gmfmap:FeatureLabelMapping">
+                <diagramLabel
+                    href="MultiRobotSystem.gmfgraph#TransitionFunctionName"/>
+                <features
+                    href="MultiRobotSystem.ecore#//TransitionFunction/name"/>
+              </labelMappings>
               <tool
                   xsi:type="gmftool:CreationTool"
                   href="MultiRobotSystem.gmftool#//@palette/@tools.0/@tools.7"/>
@@ -274,6 +303,11 @@
                   href="MultiRobotSystem.gmfgraph#TransitionFunction"/>
             </ownedChild>
           </children>
+          <compartments
+              children="//@nodes.0/@ownedChild/@children.4/@ownedChild/@children.0">
+            <compartment
+                href="MultiRobotSystem.gmfgraph#BehaviourCompartment"/>
+          </compartments>
         </ownedChild>
       </children>
     </ownedChild>

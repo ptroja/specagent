@@ -20,8 +20,8 @@ import org.eclipse.gmf.runtime.notation.View;
  * @generated NOT
  */
 public class BehaviourBehaviourCompartmentEditPart extends
-	ShapeCompartmentEditPart {
-	
+		ShapeCompartmentEditPart {
+
 	/**
 	 * @generated
 	 */

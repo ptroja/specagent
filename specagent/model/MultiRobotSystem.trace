@@ -60,23 +60,42 @@
   </childNodeTraces>
   <childNodeTraces
       visualID="3008"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'InternalData') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'Agent') and _containmentMF_.name = 'memory')"/>
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'InternalData') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'Agent') and _containmentMF_.name = 'memory')">
+    <nodeLabelTraces
+        visualID="5010"
+        queryText="true"/>
+  </childNodeTraces>
   <childNodeTraces
       visualID="3009"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'InputBuffer') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'IOElement') and _containmentMF_.name = 'inputs')"/>
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'InputBuffer') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'IOElement') and _containmentMF_.name = 'inputs')">
+    <nodeLabelTraces
+        visualID="5011"
+        queryText="true"/>
+  </childNodeTraces>
   <childNodeTraces
       visualID="3010"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'OutputBuffer') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'IOElement') and _containmentMF_.name = 'outputs')"/>
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'OutputBuffer') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'IOElement') and _containmentMF_.name = 'outputs')">
+    <nodeLabelTraces
+        visualID="5012"
+        queryText="true"/>
+  </childNodeTraces>
   <childNodeTraces
       visualID="3011"
       queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'Behaviour') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'Agent') and _containmentMF_.name = 'behaviours')">
     <nodeLabelTraces
         visualID="5009"
         queryText="true"/>
+    <compartmentTraces
+        visualID="7001"
+        queryText="true"/>
   </childNodeTraces>
   <childNodeTraces
       visualID="3012"
-      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'TransitionFunction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'Behaviour') and _containmentMF_.name = 'functions')"/>
+      queryText="(let _eClass_:ecore::EClass = modelFacet.metaClass.ecoreClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'TransitionFunction') and (let _containmentMF_:ecore::EStructuralFeature = modelFacet.containmentMetaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _containmentMF_.eContainingClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'Behaviour') and _containmentMF_.name = 'functions')">
+    <nodeLabelTraces
+        visualID="5013"
+        queryText="true"/>
+  </childNodeTraces>
   <linkTraces
       visualID="4002"
       queryText="modelFacet.oclIsKindOf(gmfgen::FeatureLinkModelFacet) and (let _feature_:ecore::EStructuralFeature = modelFacet.oclAsType(gmfgen::FeatureLinkModelFacet).metaFeature.ecoreFeature in (let _eClass_:ecore::EClass = _feature_.eContainingClass in _eClass_.ePackage.nsURI = 'http://multirobotsystem/1.0' and _eClass_.name = 'TransitionFunction') and _feature_.name = 'stimuli')"/>
